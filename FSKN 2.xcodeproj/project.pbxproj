@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2CF86D641360EDBC00292FD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D631360EDBC00292FD4 /* UIKit.framework */; };
+		2CF86D661360EDBC00292FD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D651360EDBC00292FD4 /* Foundation.framework */; };
+		2CF86D681360EDBC00292FD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */; };
+		2CF86D6E1360EDBC00292FD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CF86D6C1360EDBC00292FD4 /* InfoPlist.strings */; };
+		2CF86D711360EDBC00292FD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86D701360EDBC00292FD4 /* main.m */; };
+		2CF86D741360EDBC00292FD4 /* FSKN_2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86D731360EDBC00292FD4 /* FSKN_2AppDelegate.m */; };
+		2CF86D771360EDBC00292FD4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF86D751360EDBC00292FD4 /* MainWindow.xib */; };
+		2CF86D7A1360EDBC00292FD4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86D791360EDBC00292FD4 /* DetailViewController.m */; };
+		2CF86D7D1360EDBD00292FD4 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF86D7B1360EDBD00292FD4 /* DetailView.xib */; };
+		2CF86D801360EDBD00292FD4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86D7F1360EDBD00292FD4 /* RootViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2CF86D5F1360EDBC00292FD4 /* FSKN 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSKN 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CF86D631360EDBC00292FD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2CF86D651360EDBC00292FD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2CF86D6B1360EDBC00292FD4 /* FSKN 2-Info.plist */ = {isa = PBXFileReference; path = "FSKN 2-Info.plist"; sourceTree = "<group>"; };
+		2CF86D6D1360EDBC00292FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2CF86D6F1360EDBC00292FD4 /* FSKN 2-Prefix.pch */ = {isa = PBXFileReference; path = "FSKN 2-Prefix.pch"; sourceTree = "<group>"; };
+		2CF86D701360EDBC00292FD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2CF86D721360EDBC00292FD4 /* FSKN_2AppDelegate.h */ = {isa = PBXFileReference; path = FSKN_2AppDelegate.h; sourceTree = "<group>"; };
+		2CF86D731360EDBC00292FD4 /* FSKN_2AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSKN_2AppDelegate.m; sourceTree = "<group>"; };
+		2CF86D761360EDBC00292FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2CF86D781360EDBC00292FD4 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		2CF86D791360EDBC00292FD4 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		2CF86D7C1360EDBD00292FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
+		2CF86D7E1360EDBD00292FD4 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		2CF86D7F1360EDBD00292FD4 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2CF86D5C1360EDBC00292FD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CF86D641360EDBC00292FD4 /* UIKit.framework in Frameworks */,
+				2CF86D661360EDBC00292FD4 /* Foundation.framework in Frameworks */,
+				2CF86D681360EDBC00292FD4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CF86D541360EDBC00292FD4 = {
+			isa = PBXGroup;
+			children = (
+				2CF86D691360EDBC00292FD4 /* FSKN 2 */,
+				2CF86D621360EDBC00292FD4 /* Frameworks */,
+				2CF86D601360EDBC00292FD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2CF86D601360EDBC00292FD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86D5F1360EDBC00292FD4 /* FSKN 2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2CF86D621360EDBC00292FD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86D631360EDBC00292FD4 /* UIKit.framework */,
+				2CF86D651360EDBC00292FD4 /* Foundation.framework */,
+				2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CF86D691360EDBC00292FD4 /* FSKN 2 */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86D721360EDBC00292FD4 /* FSKN_2AppDelegate.h */,
+				2CF86D731360EDBC00292FD4 /* FSKN_2AppDelegate.m */,
+				2CF86D751360EDBC00292FD4 /* MainWindow.xib */,
+				2CF86D781360EDBC00292FD4 /* DetailViewController.h */,
+				2CF86D791360EDBC00292FD4 /* DetailViewController.m */,
+				2CF86D7B1360EDBD00292FD4 /* DetailView.xib */,
+				2CF86D7E1360EDBD00292FD4 /* RootViewController.h */,
+				2CF86D7F1360EDBD00292FD4 /* RootViewController.m */,
+				2CF86D6A1360EDBC00292FD4 /* Supporting Files */,
+			);
+			path = "FSKN 2";
+			sourceTree = "<group>";
+		};
+		2CF86D6A1360EDBC00292FD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86D6B1360EDBC00292FD4 /* FSKN 2-Info.plist */,
+				2CF86D6C1360EDBC00292FD4 /* InfoPlist.strings */,
+				2CF86D6F1360EDBC00292FD4 /* FSKN 2-Prefix.pch */,
+				2CF86D701360EDBC00292FD4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2CF86D5E1360EDBC00292FD4 /* FSKN 2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CF86D831360EDBD00292FD4 /* Build configuration list for PBXNativeTarget "FSKN 2" */;
+			buildPhases = (
+				2CF86D5B1360EDBC00292FD4 /* Sources */,
+				2CF86D5C1360EDBC00292FD4 /* Frameworks */,
+				2CF86D5D1360EDBC00292FD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FSKN 2";
+			productName = "FSKN 2";
+			productReference = 2CF86D5F1360EDBC00292FD4 /* FSKN 2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2CF86D561360EDBC00292FD4 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 2CF86D591360EDBC00292FD4 /* Build configuration list for PBXProject "FSKN 2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2CF86D541360EDBC00292FD4;
+			productRefGroup = 2CF86D601360EDBC00292FD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2CF86D5E1360EDBC00292FD4 /* FSKN 2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2CF86D5D1360EDBC00292FD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CF86D6E1360EDBC00292FD4 /* InfoPlist.strings in Resources */,
+				2CF86D771360EDBC00292FD4 /* MainWindow.xib in Resources */,
+				2CF86D7D1360EDBD00292FD4 /* DetailView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CF86D5B1360EDBC00292FD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CF86D711360EDBC00292FD4 /* main.m in Sources */,
+				2CF86D741360EDBC00292FD4 /* FSKN_2AppDelegate.m in Sources */,
+				2CF86D7A1360EDBC00292FD4 /* DetailViewController.m in Sources */,
+				2CF86D801360EDBD00292FD4 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2CF86D6C1360EDBC00292FD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CF86D6D1360EDBC00292FD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2CF86D751360EDBC00292FD4 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CF86D761360EDBC00292FD4 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		2CF86D7B1360EDBD00292FD4 /* DetailView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CF86D7C1360EDBD00292FD4 /* en */,
+			);
+			name = DetailView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2CF86D811360EDBD00292FD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		2CF86D821360EDBD00292FD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		2CF86D841360EDBD00292FD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSKN 2/FSKN 2-Prefix.pch";
+				INFOPLIST_FILE = "FSKN 2/FSKN 2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2CF86D851360EDBD00292FD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSKN 2/FSKN 2-Prefix.pch";
+				INFOPLIST_FILE = "FSKN 2/FSKN 2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CF86D591360EDBC00292FD4 /* Build configuration list for PBXProject "FSKN 2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CF86D811360EDBD00292FD4 /* Debug */,
+				2CF86D821360EDBD00292FD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CF86D831360EDBD00292FD4 /* Build configuration list for PBXNativeTarget "FSKN 2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CF86D841360EDBD00292FD4 /* Debug */,
+				2CF86D851360EDBD00292FD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2CF86D561360EDBC00292FD4 /* Project object */;
+}

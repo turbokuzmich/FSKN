@@ -14,7 +14,7 @@
 
 }
 
-		
+@property (nonatomic, retain) NSArray *list;
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 
 @end

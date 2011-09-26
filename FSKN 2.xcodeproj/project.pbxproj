@@ -7,6 +7,99 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4D00DC13612F53008157BE /* st2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C4D00DA13612F53008157BE /* st2.jpg */; };
+		2C4D00DD13612F53008157BE /* st1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C4D00DB13612F53008157BE /* st1.jpg */; };
+		2C4D00E413612F73008157BE /* Statistics1Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00DE13612F73008157BE /* Statistics1Text.m */; };
+		2C4D00E513612F73008157BE /* Statistics2Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00DF13612F73008157BE /* Statistics2Text.m */; };
+		2C4D00E613612F73008157BE /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00E213612F73008157BE /* ScrollViewController.m */; };
+		2C5A331D1368FE4800095E37 /* drugmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A331C1368FE4800095E37 /* drugmap.jpg */; };
+		2C5A33221368FEBD00095E37 /* DrugMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A33211368FEBD00095E37 /* DrugMapViewController.m */; };
+		2C5A33241368FFD600095E37 /* DrugMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33231368FFD600095E37 /* DrugMapView.xib */; };
+		2C5A33261369019300095E37 /* drugmap-red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33251369019300095E37 /* drugmap-red.jpg */; };
+		2C5A332B1369072300095E37 /* drugmap-arrows4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33271369072300095E37 /* drugmap-arrows4.jpg */; };
+		2C5A332C1369072300095E37 /* drugmap-arrows3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33281369072300095E37 /* drugmap-arrows3.jpg */; };
+		2C5A332D1369072300095E37 /* drugmap-arrows2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33291369072300095E37 /* drugmap-arrows2.jpg */; };
+		2C5A332E1369072300095E37 /* drugmap-arrows1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A332A1369072300095E37 /* drugmap-arrows1.jpg */; };
+		2C5A333013690CF400095E37 /* drugmap-pins.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A332F13690CF400095E37 /* drugmap-pins.png */; };
+		2C5A33341369186700095E37 /* saratovbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33311369186700095E37 /* saratovbubble.png */; };
+		2C5A33351369186700095E37 /* novosibbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33321369186700095E37 /* novosibbubble.png */; };
+		2C5A33361369186700095E37 /* piterbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33331369186700095E37 /* piterbubble.png */; };
+		2C5A333A1369208C00095E37 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33391369208C00095E37 /* appicon.png */; };
+		2C7F31421361012A009071A0 /* Info2.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F31411361012A009071A0 /* Info2.html */; };
+		2C7F3146136106A4009071A0 /* Info3.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F3145136106A4009071A0 /* Info3.html */; };
+		2C7F314C13610D90009071A0 /* backBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F314B13610D90009071A0 /* backBarButton.png */; };
+		2C7F3150136114BF009071A0 /* StartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F314F136114BF009071A0 /* StartScreenViewController.m */; };
+		2C7F315513611610009071A0 /* info.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F315413611610009071A0 /* info.jpg */; };
+		2CAABDC61368A0510016C009 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDC51368A0510016C009 /* tabbar.png */; };
+		2CAABDD01368A4550016C009 /* documentstab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDC71368A4540016C009 /* documentstab.png */; };
+		2CAABDD11368A4550016C009 /* drugmaptab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDC81368A4550016C009 /* drugmaptab.png */; };
+		2CAABDD21368A4550016C009 /* geographytab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDC91368A4550016C009 /* geographytab.png */; };
+		2CAABDD31368A4550016C009 /* internationaltab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDCA1368A4550016C009 /* internationaltab.png */; };
+		2CAABDD41368A4550016C009 /* maintab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDCB1368A4550016C009 /* maintab.png */; };
+		2CAABDD51368A4550016C009 /* statisticstab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDCC1368A4550016C009 /* statisticstab.png */; };
+		2CAABDD61368A4550016C009 /* structuretab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDCD1368A4550016C009 /* structuretab.png */; };
+		2CAABDD71368A4550016C009 /* thesistab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDCE1368A4550016C009 /* thesistab.png */; };
+		2CAABDD81368A4550016C009 /* videotab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDCF1368A4550016C009 /* videotab.png */; };
+		2CAABDE21368A5F40016C009 /* documentstab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDD91368A5F40016C009 /* documentstab-selected.png */; };
+		2CAABDE31368A5F40016C009 /* drugmaptab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDA1368A5F40016C009 /* drugmaptab-selected.png */; };
+		2CAABDE41368A5F40016C009 /* geographytab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDB1368A5F40016C009 /* geographytab-selected.png */; };
+		2CAABDE51368A5F40016C009 /* internationaltab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDC1368A5F40016C009 /* internationaltab-selected.png */; };
+		2CAABDE61368A5F40016C009 /* maintab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDD1368A5F40016C009 /* maintab-selected.png */; };
+		2CAABDE71368A5F40016C009 /* statisticstab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDE1368A5F40016C009 /* statisticstab-selected.png */; };
+		2CAABDE81368A5F40016C009 /* structuretab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDF1368A5F40016C009 /* structuretab-selected.png */; };
+		2CAABDE91368A5F40016C009 /* thesistab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDE01368A5F40016C009 /* thesistab-selected.png */; };
+		2CAABDEA1368A5F40016C009 /* videotab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDE11368A5F40016C009 /* videotab-selected.png */; };
+		2CB50BAC142F909200CA4771 /* MagazineRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BAA142F909200CA4771 /* MagazineRootViewController.m */; };
+		2CB50BAD142F909200CA4771 /* MagazineRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CB50BAB142F909200CA4771 /* MagazineRootViewController.xib */; };
+		2CB50BBE142FAFC500CA4771 /* PublicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BBC142FAFC500CA4771 /* PublicationController.m */; };
+		2CB50BBF142FAFC500CA4771 /* PublicationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CB50BBD142FAFC500CA4771 /* PublicationController.xib */; };
+		2CB50BD2142FBB3D00CA4771 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BCA142FBB3D00CA4771 /* ioapi.c */; };
+		2CB50BD3142FBB3D00CA4771 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BCC142FBB3D00CA4771 /* mztools.c */; };
+		2CB50BD4142FBB3D00CA4771 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BCE142FBB3D00CA4771 /* unzip.c */; };
+		2CB50BD5142FBB3D00CA4771 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BD0142FBB3D00CA4771 /* zip.c */; };
+		2CB50BD7142FBB8A00CA4771 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB50BD6142FBB8A00CA4771 /* SystemConfiguration.framework */; };
+		2CB50BD9142FBBB100CA4771 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB50BD8142FBBB100CA4771 /* libz.1.2.3.dylib */; };
+		2CB50BDE142FBBF700CA4771 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BDB142FBBF700CA4771 /* Reachability.m */; };
+		2CB50BDF142FBBF700CA4771 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BDD142FBBF700CA4771 /* SSZipArchive.m */; };
+		2CBB7F611368BD3600A762CB /* InternationalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7F601368BD3600A762CB /* InternationalDetailViewController.m */; };
+		2CBB7F641368BDDB00A762CB /* InternationalRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7F631368BDDB00A762CB /* InternationalRootViewController.m */; };
+		2CBB7F661368C14600A762CB /* InternationalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F651368C14600A762CB /* InternationalView.xib */; };
+		2CBB7F6A1368C34300A762CB /* International3.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F671368C34300A762CB /* International3.html */; };
+		2CBB7F6B1368C34300A762CB /* International2.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F681368C34300A762CB /* International2.html */; };
+		2CBB7F6C1368C34300A762CB /* International1.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F691368C34300A762CB /* International1.html */; };
+		2CBB7F701368CC7700A762CB /* International4.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F6F1368CC7700A762CB /* International4.html */; };
+		2CBB7F721368CDCB00A762CB /* International5.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F711368CDCA00A762CB /* International5.html */; };
+		2CBB7F741368CEF200A762CB /* International6.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F731368CEF100A762CB /* International6.html */; };
+		2CBB7F781368CF9300A762CB /* International7.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F771368CF9300A762CB /* International7.html */; };
+		2CBB7F7A1368D06200A762CB /* International8.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F791368D06200A762CB /* International8.html */; };
+		2CBB7F7C1368D18300A762CB /* International9.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F7B1368D18300A762CB /* International9.html */; };
+		2CBB7F871368DECB00A762CB /* structureicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F7F1368DECB00A762CB /* structureicon.png */; };
+		2CBB7F881368DECB00A762CB /* internationalicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F801368DECB00A762CB /* internationalicon.png */; };
+		2CBB7F891368DECB00A762CB /* documentsicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F811368DECB00A762CB /* documentsicon.png */; };
+		2CBB7F8A1368DECB00A762CB /* thesisicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F821368DECB00A762CB /* thesisicon.png */; };
+		2CBB7F8B1368DECB00A762CB /* videoicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F831368DECB00A762CB /* videoicon.png */; };
+		2CBB7F8C1368DECB00A762CB /* geographyicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F841368DECB00A762CB /* geographyicon.png */; };
+		2CBB7F8D1368DECB00A762CB /* drugmapicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F851368DECB00A762CB /* drugmapicon.png */; };
+		2CBB7F8E1368DECB00A762CB /* statisticsicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F861368DECB00A762CB /* statisticsicon.png */; };
+		2CBB7F921368E12D00A762CB /* ThesisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7F911368E12D00A762CB /* ThesisViewController.m */; };
+		2CBB7F941368E1DA00A762CB /* ThesisView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F931368E1DA00A762CB /* ThesisView.xib */; };
+		2CBB7F961368E6DC00A762CB /* Thesis.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F951368E6DC00A762CB /* Thesis.html */; };
+		2CBB7F9A1368ED5F00A762CB /* StructureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7F991368ED5F00A762CB /* StructureViewController.m */; };
+		2CBB7F9C1368ED8C00A762CB /* StructureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F9B1368ED8C00A762CB /* StructureView.xib */; };
+		2CBB7F9E1368EF3B00A762CB /* Structure.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F9D1368EF3B00A762CB /* Structure.html */; };
+		2CBB7FA01368F2DE00A762CB /* blogbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7F9F1368F2DE00A762CB /* blogbutton.png */; };
+		2CBB7FA21368F43E00A762CB /* strategybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7FA11368F43E00A762CB /* strategybutton.png */; };
+		2CBB7FA41368F53B00A762CB /* gnk-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7FA31368F53B00A762CB /* gnk-logo.jpg */; };
+		2CBB7FA81368F6FE00A762CB /* BiographyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7FA71368F6FE00A762CB /* BiographyViewController.m */; };
+		2CBB7FAA1368F76100A762CB /* BiographyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7FA91368F76100A762CB /* BiographyView.xib */; };
+		2CBB7FAC1368F84E00A762CB /* biographybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7FAB1368F84E00A762CB /* biographybutton.png */; };
+		2CBB7FAE1368F8F300A762CB /* Biography.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7FAD1368F8F300A762CB /* Biography.html */; };
+		2CBB7FB01368FA1D00A762CB /* ivanov-photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7FAF1368FA1D00A762CB /* ivanov-photo.jpg */; };
+		2CBFF4F313613CF7000336C8 /* StatisticsPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFF4F213613CF7000336C8 /* StatisticsPageControl.m */; };
+		2CBFF4F813613F35000336C8 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFF4F713613F35000336C8 /* MainScreenViewController.m */; };
+		2CBFF4FC13614291000336C8 /* startscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFF4FB13614291000336C8 /* startscreen.png */; };
+		2CBFF50C136154D4000336C8 /* GeographyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFF50B136154D4000336C8 /* GeographyViewController.m */; };
+		2CBFF50E13615AF1000336C8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBFF50D13615AF1000336C8 /* MapKit.framework */; };
 		2CF86D641360EDBC00292FD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D631360EDBC00292FD4 /* UIKit.framework */; };
 		2CF86D661360EDBC00292FD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D651360EDBC00292FD4 /* Foundation.framework */; };
 		2CF86D681360EDBC00292FD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */; };
@@ -17,25 +110,144 @@
 		2CF86D7A1360EDBC00292FD4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86D791360EDBC00292FD4 /* DetailViewController.m */; };
 		2CF86D7D1360EDBD00292FD4 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF86D7B1360EDBD00292FD4 /* DetailView.xib */; };
 		2CF86D801360EDBD00292FD4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86D7F1360EDBD00292FD4 /* RootViewController.m */; };
+		2CF86D921360EE2D00292FD4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D911360EE2D00292FD4 /* CoreText.framework */; };
+		2CF86D9B1360F99700292FD4 /* Info1.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CF86D9A1360F99700292FD4 /* Info1.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C4D00DA13612F53008157BE /* st2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st2.jpg; sourceTree = "<group>"; };
+		2C4D00DB13612F53008157BE /* st1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st1.jpg; sourceTree = "<group>"; };
+		2C4D00DE13612F73008157BE /* Statistics1Text.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistics1Text.m; sourceTree = "<group>"; };
+		2C4D00DF13612F73008157BE /* Statistics2Text.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistics2Text.m; sourceTree = "<group>"; };
+		2C4D00E013612F73008157BE /* Statistics2Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistics2Text.h; sourceTree = "<group>"; };
+		2C4D00E113612F73008157BE /* Statistics1Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistics1Text.h; sourceTree = "<group>"; };
+		2C4D00E213612F73008157BE /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+		2C4D00E313612F73008157BE /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		2C5A331C1368FE4800095E37 /* drugmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drugmap.jpg; sourceTree = "<group>"; };
+		2C5A33201368FEBD00095E37 /* DrugMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugMapViewController.h; sourceTree = "<group>"; };
+		2C5A33211368FEBD00095E37 /* DrugMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugMapViewController.m; sourceTree = "<group>"; };
+		2C5A33231368FFD600095E37 /* DrugMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrugMapView.xib; sourceTree = "<group>"; };
+		2C5A33251369019300095E37 /* drugmap-red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-red.jpg"; sourceTree = "<group>"; };
+		2C5A33271369072300095E37 /* drugmap-arrows4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows4.jpg"; sourceTree = "<group>"; };
+		2C5A33281369072300095E37 /* drugmap-arrows3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows3.jpg"; sourceTree = "<group>"; };
+		2C5A33291369072300095E37 /* drugmap-arrows2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows2.jpg"; sourceTree = "<group>"; };
+		2C5A332A1369072300095E37 /* drugmap-arrows1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows1.jpg"; sourceTree = "<group>"; };
+		2C5A332F13690CF400095E37 /* drugmap-pins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-pins.png"; sourceTree = "<group>"; };
+		2C5A33311369186700095E37 /* saratovbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saratovbubble.png; sourceTree = "<group>"; };
+		2C5A33321369186700095E37 /* novosibbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = novosibbubble.png; sourceTree = "<group>"; };
+		2C5A33331369186700095E37 /* piterbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piterbubble.png; sourceTree = "<group>"; };
+		2C5A33391369208C00095E37 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = ../appicon.png; sourceTree = "<group>"; };
+		2C7F31411361012A009071A0 /* Info2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Info2.html; sourceTree = "<group>"; };
+		2C7F3145136106A4009071A0 /* Info3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Info3.html; sourceTree = "<group>"; };
+		2C7F314B13610D90009071A0 /* backBarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backBarButton.png; sourceTree = "<group>"; };
+		2C7F314E136114BF009071A0 /* StartScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenViewController.h; sourceTree = "<group>"; };
+		2C7F314F136114BF009071A0 /* StartScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenViewController.m; sourceTree = "<group>"; };
+		2C7F315413611610009071A0 /* info.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = info.jpg; sourceTree = "<group>"; };
+		2CAABDC51368A0510016C009 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
+		2CAABDC71368A4540016C009 /* documentstab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documentstab.png; sourceTree = "<group>"; };
+		2CAABDC81368A4550016C009 /* drugmaptab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drugmaptab.png; sourceTree = "<group>"; };
+		2CAABDC91368A4550016C009 /* geographytab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geographytab.png; sourceTree = "<group>"; };
+		2CAABDCA1368A4550016C009 /* internationaltab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internationaltab.png; sourceTree = "<group>"; };
+		2CAABDCB1368A4550016C009 /* maintab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maintab.png; sourceTree = "<group>"; };
+		2CAABDCC1368A4550016C009 /* statisticstab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statisticstab.png; sourceTree = "<group>"; };
+		2CAABDCD1368A4550016C009 /* structuretab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = structuretab.png; sourceTree = "<group>"; };
+		2CAABDCE1368A4550016C009 /* thesistab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thesistab.png; sourceTree = "<group>"; };
+		2CAABDCF1368A4550016C009 /* videotab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videotab.png; sourceTree = "<group>"; };
+		2CAABDD91368A5F40016C009 /* documentstab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "documentstab-selected.png"; sourceTree = "<group>"; };
+		2CAABDDA1368A5F40016C009 /* drugmaptab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmaptab-selected.png"; sourceTree = "<group>"; };
+		2CAABDDB1368A5F40016C009 /* geographytab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geographytab-selected.png"; sourceTree = "<group>"; };
+		2CAABDDC1368A5F40016C009 /* internationaltab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "internationaltab-selected.png"; sourceTree = "<group>"; };
+		2CAABDDD1368A5F40016C009 /* maintab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "maintab-selected.png"; sourceTree = "<group>"; };
+		2CAABDDE1368A5F40016C009 /* statisticstab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statisticstab-selected.png"; sourceTree = "<group>"; };
+		2CAABDDF1368A5F40016C009 /* structuretab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structuretab-selected.png"; sourceTree = "<group>"; };
+		2CAABDE01368A5F40016C009 /* thesistab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thesistab-selected.png"; sourceTree = "<group>"; };
+		2CAABDE11368A5F40016C009 /* videotab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotab-selected.png"; sourceTree = "<group>"; };
+		2CB50BA9142F909200CA4771 /* MagazineRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazineRootViewController.h; sourceTree = "<group>"; };
+		2CB50BAA142F909200CA4771 /* MagazineRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazineRootViewController.m; sourceTree = "<group>"; };
+		2CB50BAB142F909200CA4771 /* MagazineRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MagazineRootViewController.xib; sourceTree = "<group>"; };
+		2CB50BBB142FAFC500CA4771 /* PublicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicationController.h; sourceTree = "<group>"; };
+		2CB50BBC142FAFC500CA4771 /* PublicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicationController.m; sourceTree = "<group>"; };
+		2CB50BBD142FAFC500CA4771 /* PublicationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublicationController.xib; sourceTree = "<group>"; };
+		2CB50BC9142FBB3D00CA4771 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		2CB50BCA142FBB3D00CA4771 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		2CB50BCB142FBB3D00CA4771 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		2CB50BCC142FBB3D00CA4771 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		2CB50BCD142FBB3D00CA4771 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		2CB50BCE142FBB3D00CA4771 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		2CB50BCF142FBB3D00CA4771 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		2CB50BD0142FBB3D00CA4771 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		2CB50BD1142FBB3D00CA4771 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		2CB50BD6142FBB8A00CA4771 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2CB50BD8142FBBB100CA4771 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		2CB50BDA142FBBF700CA4771 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2CB50BDB142FBBF700CA4771 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		2CB50BDC142FBBF700CA4771 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		2CB50BDD142FBBF700CA4771 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		2CBB7F5F1368BD3600A762CB /* InternationalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternationalDetailViewController.h; sourceTree = "<group>"; };
+		2CBB7F601368BD3600A762CB /* InternationalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternationalDetailViewController.m; sourceTree = "<group>"; };
+		2CBB7F621368BDDB00A762CB /* InternationalRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternationalRootViewController.h; sourceTree = "<group>"; };
+		2CBB7F631368BDDB00A762CB /* InternationalRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternationalRootViewController.m; sourceTree = "<group>"; };
+		2CBB7F651368C14600A762CB /* InternationalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InternationalView.xib; sourceTree = "<group>"; };
+		2CBB7F671368C34300A762CB /* International3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International3.html; sourceTree = "<group>"; };
+		2CBB7F681368C34300A762CB /* International2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International2.html; sourceTree = "<group>"; };
+		2CBB7F691368C34300A762CB /* International1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International1.html; sourceTree = "<group>"; };
+		2CBB7F6F1368CC7700A762CB /* International4.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International4.html; sourceTree = "<group>"; };
+		2CBB7F711368CDCA00A762CB /* International5.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International5.html; sourceTree = "<group>"; };
+		2CBB7F731368CEF100A762CB /* International6.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International6.html; sourceTree = "<group>"; };
+		2CBB7F771368CF9300A762CB /* International7.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International7.html; sourceTree = "<group>"; };
+		2CBB7F791368D06200A762CB /* International8.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International8.html; sourceTree = "<group>"; };
+		2CBB7F7B1368D18300A762CB /* International9.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = International9.html; sourceTree = "<group>"; };
+		2CBB7F7F1368DECB00A762CB /* structureicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = structureicon.png; sourceTree = "<group>"; };
+		2CBB7F801368DECB00A762CB /* internationalicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internationalicon.png; sourceTree = "<group>"; };
+		2CBB7F811368DECB00A762CB /* documentsicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documentsicon.png; sourceTree = "<group>"; };
+		2CBB7F821368DECB00A762CB /* thesisicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thesisicon.png; sourceTree = "<group>"; };
+		2CBB7F831368DECB00A762CB /* videoicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoicon.png; sourceTree = "<group>"; };
+		2CBB7F841368DECB00A762CB /* geographyicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geographyicon.png; sourceTree = "<group>"; };
+		2CBB7F851368DECB00A762CB /* drugmapicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drugmapicon.png; sourceTree = "<group>"; };
+		2CBB7F861368DECB00A762CB /* statisticsicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statisticsicon.png; sourceTree = "<group>"; };
+		2CBB7F901368E12D00A762CB /* ThesisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThesisViewController.h; sourceTree = "<group>"; };
+		2CBB7F911368E12D00A762CB /* ThesisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThesisViewController.m; sourceTree = "<group>"; };
+		2CBB7F931368E1DA00A762CB /* ThesisView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisView.xib; sourceTree = "<group>"; };
+		2CBB7F951368E6DC00A762CB /* Thesis.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Thesis.html; sourceTree = "<group>"; };
+		2CBB7F981368ED5F00A762CB /* StructureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StructureViewController.h; sourceTree = "<group>"; };
+		2CBB7F991368ED5F00A762CB /* StructureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StructureViewController.m; sourceTree = "<group>"; };
+		2CBB7F9B1368ED8C00A762CB /* StructureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StructureView.xib; sourceTree = "<group>"; };
+		2CBB7F9D1368EF3B00A762CB /* Structure.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Structure.html; sourceTree = "<group>"; };
+		2CBB7F9F1368F2DE00A762CB /* blogbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blogbutton.png; sourceTree = "<group>"; };
+		2CBB7FA11368F43E00A762CB /* strategybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strategybutton.png; sourceTree = "<group>"; };
+		2CBB7FA31368F53B00A762CB /* gnk-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "gnk-logo.jpg"; sourceTree = "<group>"; };
+		2CBB7FA61368F6FE00A762CB /* BiographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiographyViewController.h; sourceTree = "<group>"; };
+		2CBB7FA71368F6FE00A762CB /* BiographyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiographyViewController.m; sourceTree = "<group>"; };
+		2CBB7FA91368F76100A762CB /* BiographyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiographyView.xib; sourceTree = "<group>"; };
+		2CBB7FAB1368F84E00A762CB /* biographybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biographybutton.png; sourceTree = "<group>"; };
+		2CBB7FAD1368F8F300A762CB /* Biography.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Biography.html; sourceTree = "<group>"; };
+		2CBB7FAF1368FA1D00A762CB /* ivanov-photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ivanov-photo.jpg"; sourceTree = "<group>"; };
+		2CBFF4F113613CF7000336C8 /* StatisticsPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsPageControl.h; sourceTree = "<group>"; };
+		2CBFF4F213613CF7000336C8 /* StatisticsPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsPageControl.m; sourceTree = "<group>"; };
+		2CBFF4F613613F35000336C8 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenViewController.h; sourceTree = "<group>"; };
+		2CBFF4F713613F35000336C8 /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenViewController.m; sourceTree = "<group>"; };
+		2CBFF4FB13614291000336C8 /* startscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startscreen.png; sourceTree = "<group>"; };
+		2CBFF50A136154D4000336C8 /* GeographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeographyViewController.h; sourceTree = "<group>"; };
+		2CBFF50B136154D4000336C8 /* GeographyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeographyViewController.m; sourceTree = "<group>"; };
+		2CBFF50D13615AF1000336C8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2CF86D5F1360EDBC00292FD4 /* FSKN 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSKN 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF86D631360EDBC00292FD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CF86D651360EDBC00292FD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2CF86D6B1360EDBC00292FD4 /* FSKN 2-Info.plist */ = {isa = PBXFileReference; path = "FSKN 2-Info.plist"; sourceTree = "<group>"; };
+		2CF86D6B1360EDBC00292FD4 /* FSKN 2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FSKN 2-Info.plist"; sourceTree = "<group>"; };
 		2CF86D6D1360EDBC00292FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2CF86D6F1360EDBC00292FD4 /* FSKN 2-Prefix.pch */ = {isa = PBXFileReference; path = "FSKN 2-Prefix.pch"; sourceTree = "<group>"; };
+		2CF86D6F1360EDBC00292FD4 /* FSKN 2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSKN 2-Prefix.pch"; sourceTree = "<group>"; };
 		2CF86D701360EDBC00292FD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2CF86D721360EDBC00292FD4 /* FSKN_2AppDelegate.h */ = {isa = PBXFileReference; path = FSKN_2AppDelegate.h; sourceTree = "<group>"; };
+		2CF86D721360EDBC00292FD4 /* FSKN_2AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSKN_2AppDelegate.h; sourceTree = "<group>"; };
 		2CF86D731360EDBC00292FD4 /* FSKN_2AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSKN_2AppDelegate.m; sourceTree = "<group>"; };
 		2CF86D761360EDBC00292FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		2CF86D781360EDBC00292FD4 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		2CF86D781360EDBC00292FD4 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		2CF86D791360EDBC00292FD4 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		2CF86D7C1360EDBD00292FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
-		2CF86D7E1360EDBD00292FD4 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		2CF86D7E1360EDBD00292FD4 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2CF86D7F1360EDBD00292FD4 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2CF86D911360EE2D00292FD4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		2CF86D9A1360F99700292FD4 /* Info1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Info1.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +255,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB50BD9142FBBB100CA4771 /* libz.1.2.3.dylib in Frameworks */,
+				2CB50BD7142FBB8A00CA4771 /* SystemConfiguration.framework in Frameworks */,
+				2CBFF50E13615AF1000336C8 /* MapKit.framework in Frameworks */,
+				2CF86D921360EE2D00292FD4 /* CoreText.framework in Frameworks */,
 				2CF86D641360EDBC00292FD4 /* UIKit.framework in Frameworks */,
 				2CF86D661360EDBC00292FD4 /* Foundation.framework in Frameworks */,
 				2CF86D681360EDBC00292FD4 /* CoreGraphics.framework in Frameworks */,
@@ -52,10 +268,202 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C4D00D913612CF8008157BE /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				2C4D00DE13612F73008157BE /* Statistics1Text.m */,
+				2C4D00DF13612F73008157BE /* Statistics2Text.m */,
+				2C4D00E013612F73008157BE /* Statistics2Text.h */,
+				2C4D00E113612F73008157BE /* Statistics1Text.h */,
+				2C4D00E213612F73008157BE /* ScrollViewController.m */,
+				2C4D00E313612F73008157BE /* ScrollViewController.h */,
+				2CBFF4F113613CF7000336C8 /* StatisticsPageControl.h */,
+				2CBFF4F213613CF7000336C8 /* StatisticsPageControl.m */,
+			);
+			name = Statistics;
+			sourceTree = "<group>";
+		};
+		2C5A331F1368FEA200095E37 /* DrugMap */ = {
+			isa = PBXGroup;
+			children = (
+				2C5A33201368FEBD00095E37 /* DrugMapViewController.h */,
+				2C5A33211368FEBD00095E37 /* DrugMapViewController.m */,
+				2C5A33231368FFD600095E37 /* DrugMapView.xib */,
+			);
+			name = DrugMap;
+			sourceTree = "<group>";
+		};
+		2C7F314D136113E1009071A0 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F314E136114BF009071A0 /* StartScreenViewController.h */,
+				2C7F314F136114BF009071A0 /* StartScreenViewController.m */,
+			);
+			name = StartScreen;
+			sourceTree = "<group>";
+		};
+		2C7F3153136115F3009071A0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2C5A33391369208C00095E37 /* appicon.png */,
+				2C5A33311369186700095E37 /* saratovbubble.png */,
+				2C5A33321369186700095E37 /* novosibbubble.png */,
+				2C5A33331369186700095E37 /* piterbubble.png */,
+				2C5A332F13690CF400095E37 /* drugmap-pins.png */,
+				2C5A33271369072300095E37 /* drugmap-arrows4.jpg */,
+				2C5A33281369072300095E37 /* drugmap-arrows3.jpg */,
+				2C5A33291369072300095E37 /* drugmap-arrows2.jpg */,
+				2C5A332A1369072300095E37 /* drugmap-arrows1.jpg */,
+				2C5A33251369019300095E37 /* drugmap-red.jpg */,
+				2C5A331C1368FE4800095E37 /* drugmap.jpg */,
+				2CBB7FAF1368FA1D00A762CB /* ivanov-photo.jpg */,
+				2CBB7FAB1368F84E00A762CB /* biographybutton.png */,
+				2CBB7FA31368F53B00A762CB /* gnk-logo.jpg */,
+				2CBB7FA11368F43E00A762CB /* strategybutton.png */,
+				2CBB7F9F1368F2DE00A762CB /* blogbutton.png */,
+				2CBB7F7F1368DECB00A762CB /* structureicon.png */,
+				2CBB7F801368DECB00A762CB /* internationalicon.png */,
+				2CBB7F811368DECB00A762CB /* documentsicon.png */,
+				2CBB7F821368DECB00A762CB /* thesisicon.png */,
+				2CBB7F831368DECB00A762CB /* videoicon.png */,
+				2CBB7F841368DECB00A762CB /* geographyicon.png */,
+				2CBB7F851368DECB00A762CB /* drugmapicon.png */,
+				2CBB7F861368DECB00A762CB /* statisticsicon.png */,
+				2CAABDD91368A5F40016C009 /* documentstab-selected.png */,
+				2CAABDDA1368A5F40016C009 /* drugmaptab-selected.png */,
+				2CAABDDB1368A5F40016C009 /* geographytab-selected.png */,
+				2CAABDDC1368A5F40016C009 /* internationaltab-selected.png */,
+				2CAABDDD1368A5F40016C009 /* maintab-selected.png */,
+				2CAABDDE1368A5F40016C009 /* statisticstab-selected.png */,
+				2CAABDDF1368A5F40016C009 /* structuretab-selected.png */,
+				2CAABDE01368A5F40016C009 /* thesistab-selected.png */,
+				2CAABDE11368A5F40016C009 /* videotab-selected.png */,
+				2CAABDC71368A4540016C009 /* documentstab.png */,
+				2CAABDC81368A4550016C009 /* drugmaptab.png */,
+				2CAABDC91368A4550016C009 /* geographytab.png */,
+				2CAABDCA1368A4550016C009 /* internationaltab.png */,
+				2CAABDCB1368A4550016C009 /* maintab.png */,
+				2CAABDCC1368A4550016C009 /* statisticstab.png */,
+				2CAABDCD1368A4550016C009 /* structuretab.png */,
+				2CAABDCE1368A4550016C009 /* thesistab.png */,
+				2CAABDCF1368A4550016C009 /* videotab.png */,
+				2CAABDC51368A0510016C009 /* tabbar.png */,
+				2CBFF4FB13614291000336C8 /* startscreen.png */,
+				2C4D00DA13612F53008157BE /* st2.jpg */,
+				2C4D00DB13612F53008157BE /* st1.jpg */,
+				2C7F315413611610009071A0 /* info.jpg */,
+				2C7F314B13610D90009071A0 /* backBarButton.png */,
+			);
+			name = images;
+			path = "FSKN 2";
+			sourceTree = "<group>";
+		};
+		2CB50BA3142F8AF500CA4771 /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				2CB50BA9142F909200CA4771 /* MagazineRootViewController.h */,
+				2CB50BAA142F909200CA4771 /* MagazineRootViewController.m */,
+				2CB50BAB142F909200CA4771 /* MagazineRootViewController.xib */,
+				2CB50BBB142FAFC500CA4771 /* PublicationController.h */,
+				2CB50BBC142FAFC500CA4771 /* PublicationController.m */,
+				2CB50BBD142FAFC500CA4771 /* PublicationController.xib */,
+			);
+			name = Magazine;
+			sourceTree = "<group>";
+		};
+		2CB50BC8142FBB3D00CA4771 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				2CB50BC9142FBB3D00CA4771 /* crypt.h */,
+				2CB50BCA142FBB3D00CA4771 /* ioapi.c */,
+				2CB50BCB142FBB3D00CA4771 /* ioapi.h */,
+				2CB50BCC142FBB3D00CA4771 /* mztools.c */,
+				2CB50BCD142FBB3D00CA4771 /* mztools.h */,
+				2CB50BCE142FBB3D00CA4771 /* unzip.c */,
+				2CB50BCF142FBB3D00CA4771 /* unzip.h */,
+				2CB50BD0142FBB3D00CA4771 /* zip.c */,
+				2CB50BD1142FBB3D00CA4771 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		2CBB7F5E1368BC5600A762CB /* International */ = {
+			isa = PBXGroup;
+			children = (
+				2CBB7F7B1368D18300A762CB /* International9.html */,
+				2CBB7F791368D06200A762CB /* International8.html */,
+				2CBB7F771368CF9300A762CB /* International7.html */,
+				2CBB7F731368CEF100A762CB /* International6.html */,
+				2CBB7F711368CDCA00A762CB /* International5.html */,
+				2CBB7F6F1368CC7700A762CB /* International4.html */,
+				2CBB7F671368C34300A762CB /* International3.html */,
+				2CBB7F681368C34300A762CB /* International2.html */,
+				2CBB7F691368C34300A762CB /* International1.html */,
+				2CBB7F5F1368BD3600A762CB /* InternationalDetailViewController.h */,
+				2CBB7F601368BD3600A762CB /* InternationalDetailViewController.m */,
+				2CBB7F621368BDDB00A762CB /* InternationalRootViewController.h */,
+				2CBB7F631368BDDB00A762CB /* InternationalRootViewController.m */,
+				2CBB7F651368C14600A762CB /* InternationalView.xib */,
+			);
+			name = International;
+			sourceTree = "<group>";
+		};
+		2CBB7F8F1368E10B00A762CB /* Thesis */ = {
+			isa = PBXGroup;
+			children = (
+				2CBB7F901368E12D00A762CB /* ThesisViewController.h */,
+				2CBB7F911368E12D00A762CB /* ThesisViewController.m */,
+				2CBB7F931368E1DA00A762CB /* ThesisView.xib */,
+				2CBB7F951368E6DC00A762CB /* Thesis.html */,
+			);
+			name = Thesis;
+			sourceTree = "<group>";
+		};
+		2CBB7F971368ED4700A762CB /* Structure */ = {
+			isa = PBXGroup;
+			children = (
+				2CBB7F981368ED5F00A762CB /* StructureViewController.h */,
+				2CBB7F991368ED5F00A762CB /* StructureViewController.m */,
+				2CBB7F9B1368ED8C00A762CB /* StructureView.xib */,
+				2CBB7F9D1368EF3B00A762CB /* Structure.html */,
+			);
+			name = Structure;
+			sourceTree = "<group>";
+		};
+		2CBB7FA51368F69100A762CB /* Biography */ = {
+			isa = PBXGroup;
+			children = (
+				2CBB7FA61368F6FE00A762CB /* BiographyViewController.h */,
+				2CBB7FA71368F6FE00A762CB /* BiographyViewController.m */,
+				2CBB7FA91368F76100A762CB /* BiographyView.xib */,
+				2CBB7FAD1368F8F300A762CB /* Biography.html */,
+			);
+			name = Biography;
+			sourceTree = "<group>";
+		};
+		2CBFF4F513613F04000336C8 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2CBFF4F613613F35000336C8 /* MainScreenViewController.h */,
+				2CBFF4F713613F35000336C8 /* MainScreenViewController.m */,
+			);
+			name = MainScreen;
+			sourceTree = "<group>";
+		};
+		2CBFF509136154B2000336C8 /* Geography */ = {
+			isa = PBXGroup;
+			children = (
+				2CBFF50A136154D4000336C8 /* GeographyViewController.h */,
+				2CBFF50B136154D4000336C8 /* GeographyViewController.m */,
+			);
+			name = Geography;
+			sourceTree = "<group>";
+		};
 		2CF86D541360EDBC00292FD4 = {
 			isa = PBXGroup;
 			children = (
 				2CF86D691360EDBC00292FD4 /* FSKN 2 */,
+				2C7F3153136115F3009071A0 /* images */,
 				2CF86D621360EDBC00292FD4 /* Frameworks */,
 				2CF86D601360EDBC00292FD4 /* Products */,
 			);
@@ -72,6 +480,10 @@
 		2CF86D621360EDBC00292FD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CB50BD8142FBBB100CA4771 /* libz.1.2.3.dylib */,
+				2CB50BD6142FBB8A00CA4771 /* SystemConfiguration.framework */,
+				2CBFF50D13615AF1000336C8 /* MapKit.framework */,
+				2CF86D911360EE2D00292FD4 /* CoreText.framework */,
 				2CF86D631360EDBC00292FD4 /* UIKit.framework */,
 				2CF86D651360EDBC00292FD4 /* Foundation.framework */,
 				2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */,
@@ -82,14 +494,25 @@
 		2CF86D691360EDBC00292FD4 /* FSKN 2 */ = {
 			isa = PBXGroup;
 			children = (
+				2CB50BC8142FBB3D00CA4771 /* minizip */,
+				2CB50BA3142F8AF500CA4771 /* Magazine */,
+				2C5A331F1368FEA200095E37 /* DrugMap */,
+				2CBB7FA51368F69100A762CB /* Biography */,
+				2CBB7F971368ED4700A762CB /* Structure */,
+				2CBB7F8F1368E10B00A762CB /* Thesis */,
+				2CBB7F5E1368BC5600A762CB /* International */,
+				2CBFF509136154B2000336C8 /* Geography */,
+				2CBFF4F513613F04000336C8 /* MainScreen */,
+				2C4D00D913612CF8008157BE /* Statistics */,
+				2C7F314D136113E1009071A0 /* StartScreen */,
+				2CF86D931360F2E900292FD4 /* Documents */,
 				2CF86D721360EDBC00292FD4 /* FSKN_2AppDelegate.h */,
 				2CF86D731360EDBC00292FD4 /* FSKN_2AppDelegate.m */,
 				2CF86D751360EDBC00292FD4 /* MainWindow.xib */,
-				2CF86D781360EDBC00292FD4 /* DetailViewController.h */,
-				2CF86D791360EDBC00292FD4 /* DetailViewController.m */,
-				2CF86D7B1360EDBD00292FD4 /* DetailView.xib */,
-				2CF86D7E1360EDBD00292FD4 /* RootViewController.h */,
-				2CF86D7F1360EDBD00292FD4 /* RootViewController.m */,
+				2CB50BDA142FBBF700CA4771 /* Reachability.h */,
+				2CB50BDB142FBBF700CA4771 /* Reachability.m */,
+				2CB50BDC142FBBF700CA4771 /* SSZipArchive.h */,
+				2CB50BDD142FBBF700CA4771 /* SSZipArchive.m */,
 				2CF86D6A1360EDBC00292FD4 /* Supporting Files */,
 			);
 			path = "FSKN 2";
@@ -106,6 +529,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2CF86D931360F2E900292FD4 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86D7B1360EDBD00292FD4 /* DetailView.xib */,
+				2CF86D781360EDBC00292FD4 /* DetailViewController.h */,
+				2CF86D791360EDBC00292FD4 /* DetailViewController.m */,
+				2CF86D9A1360F99700292FD4 /* Info1.html */,
+				2C7F31411361012A009071A0 /* Info2.html */,
+				2C7F3145136106A4009071A0 /* Info3.html */,
+				2CF86D7E1360EDBD00292FD4 /* RootViewController.h */,
+				2CF86D7F1360EDBD00292FD4 /* RootViewController.m */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +551,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CF86D831360EDBD00292FD4 /* Build configuration list for PBXNativeTarget "FSKN 2" */;
 			buildPhases = (
+				2CF86D5D1360EDBC00292FD4 /* Resources */,
 				2CF86D5B1360EDBC00292FD4 /* Sources */,
 				2CF86D5C1360EDBC00292FD4 /* Frameworks */,
-				2CF86D5D1360EDBC00292FD4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +594,76 @@
 				2CF86D6E1360EDBC00292FD4 /* InfoPlist.strings in Resources */,
 				2CF86D771360EDBC00292FD4 /* MainWindow.xib in Resources */,
 				2CF86D7D1360EDBD00292FD4 /* DetailView.xib in Resources */,
+				2CF86D9B1360F99700292FD4 /* Info1.html in Resources */,
+				2C7F31421361012A009071A0 /* Info2.html in Resources */,
+				2C7F3146136106A4009071A0 /* Info3.html in Resources */,
+				2C7F314C13610D90009071A0 /* backBarButton.png in Resources */,
+				2C7F315513611610009071A0 /* info.jpg in Resources */,
+				2C4D00DC13612F53008157BE /* st2.jpg in Resources */,
+				2C4D00DD13612F53008157BE /* st1.jpg in Resources */,
+				2CBFF4FC13614291000336C8 /* startscreen.png in Resources */,
+				2CAABDC61368A0510016C009 /* tabbar.png in Resources */,
+				2CAABDD01368A4550016C009 /* documentstab.png in Resources */,
+				2CAABDD11368A4550016C009 /* drugmaptab.png in Resources */,
+				2CAABDD21368A4550016C009 /* geographytab.png in Resources */,
+				2CAABDD31368A4550016C009 /* internationaltab.png in Resources */,
+				2CAABDD41368A4550016C009 /* maintab.png in Resources */,
+				2CAABDD51368A4550016C009 /* statisticstab.png in Resources */,
+				2CAABDD61368A4550016C009 /* structuretab.png in Resources */,
+				2CAABDD71368A4550016C009 /* thesistab.png in Resources */,
+				2CAABDD81368A4550016C009 /* videotab.png in Resources */,
+				2CAABDE21368A5F40016C009 /* documentstab-selected.png in Resources */,
+				2CAABDE31368A5F40016C009 /* drugmaptab-selected.png in Resources */,
+				2CAABDE41368A5F40016C009 /* geographytab-selected.png in Resources */,
+				2CAABDE51368A5F40016C009 /* internationaltab-selected.png in Resources */,
+				2CAABDE61368A5F40016C009 /* maintab-selected.png in Resources */,
+				2CAABDE71368A5F40016C009 /* statisticstab-selected.png in Resources */,
+				2CAABDE81368A5F40016C009 /* structuretab-selected.png in Resources */,
+				2CAABDE91368A5F40016C009 /* thesistab-selected.png in Resources */,
+				2CAABDEA1368A5F40016C009 /* videotab-selected.png in Resources */,
+				2CBB7F661368C14600A762CB /* InternationalView.xib in Resources */,
+				2CBB7F6A1368C34300A762CB /* International3.html in Resources */,
+				2CBB7F6B1368C34300A762CB /* International2.html in Resources */,
+				2CBB7F6C1368C34300A762CB /* International1.html in Resources */,
+				2CBB7F701368CC7700A762CB /* International4.html in Resources */,
+				2CBB7F721368CDCB00A762CB /* International5.html in Resources */,
+				2CBB7F741368CEF200A762CB /* International6.html in Resources */,
+				2CBB7F781368CF9300A762CB /* International7.html in Resources */,
+				2CBB7F7A1368D06200A762CB /* International8.html in Resources */,
+				2CBB7F7C1368D18300A762CB /* International9.html in Resources */,
+				2CBB7F871368DECB00A762CB /* structureicon.png in Resources */,
+				2CBB7F881368DECB00A762CB /* internationalicon.png in Resources */,
+				2CBB7F891368DECB00A762CB /* documentsicon.png in Resources */,
+				2CBB7F8A1368DECB00A762CB /* thesisicon.png in Resources */,
+				2CBB7F8B1368DECB00A762CB /* videoicon.png in Resources */,
+				2CBB7F8C1368DECB00A762CB /* geographyicon.png in Resources */,
+				2CBB7F8D1368DECB00A762CB /* drugmapicon.png in Resources */,
+				2CBB7F8E1368DECB00A762CB /* statisticsicon.png in Resources */,
+				2CBB7F941368E1DA00A762CB /* ThesisView.xib in Resources */,
+				2CBB7F961368E6DC00A762CB /* Thesis.html in Resources */,
+				2CBB7F9C1368ED8C00A762CB /* StructureView.xib in Resources */,
+				2CBB7F9E1368EF3B00A762CB /* Structure.html in Resources */,
+				2CBB7FA01368F2DE00A762CB /* blogbutton.png in Resources */,
+				2CBB7FA21368F43E00A762CB /* strategybutton.png in Resources */,
+				2CBB7FA41368F53B00A762CB /* gnk-logo.jpg in Resources */,
+				2CBB7FAA1368F76100A762CB /* BiographyView.xib in Resources */,
+				2CBB7FAC1368F84E00A762CB /* biographybutton.png in Resources */,
+				2CBB7FAE1368F8F300A762CB /* Biography.html in Resources */,
+				2CBB7FB01368FA1D00A762CB /* ivanov-photo.jpg in Resources */,
+				2C5A331D1368FE4800095E37 /* drugmap.jpg in Resources */,
+				2C5A33241368FFD600095E37 /* DrugMapView.xib in Resources */,
+				2C5A33261369019300095E37 /* drugmap-red.jpg in Resources */,
+				2C5A332B1369072300095E37 /* drugmap-arrows4.jpg in Resources */,
+				2C5A332C1369072300095E37 /* drugmap-arrows3.jpg in Resources */,
+				2C5A332D1369072300095E37 /* drugmap-arrows2.jpg in Resources */,
+				2C5A332E1369072300095E37 /* drugmap-arrows1.jpg in Resources */,
+				2C5A333013690CF400095E37 /* drugmap-pins.png in Resources */,
+				2C5A33341369186700095E37 /* saratovbubble.png in Resources */,
+				2C5A33351369186700095E37 /* novosibbubble.png in Resources */,
+				2C5A33361369186700095E37 /* piterbubble.png in Resources */,
+				2C5A333A1369208C00095E37 /* appicon.png in Resources */,
+				2CB50BAD142F909200CA4771 /* MagazineRootViewController.xib in Resources */,
+				2CB50BBF142FAFC500CA4771 /* PublicationController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +678,27 @@
 				2CF86D741360EDBC00292FD4 /* FSKN_2AppDelegate.m in Sources */,
 				2CF86D7A1360EDBC00292FD4 /* DetailViewController.m in Sources */,
 				2CF86D801360EDBD00292FD4 /* RootViewController.m in Sources */,
+				2C7F3150136114BF009071A0 /* StartScreenViewController.m in Sources */,
+				2C4D00E413612F73008157BE /* Statistics1Text.m in Sources */,
+				2C4D00E513612F73008157BE /* Statistics2Text.m in Sources */,
+				2C4D00E613612F73008157BE /* ScrollViewController.m in Sources */,
+				2CBFF4F313613CF7000336C8 /* StatisticsPageControl.m in Sources */,
+				2CBFF4F813613F35000336C8 /* MainScreenViewController.m in Sources */,
+				2CBFF50C136154D4000336C8 /* GeographyViewController.m in Sources */,
+				2CBB7F611368BD3600A762CB /* InternationalDetailViewController.m in Sources */,
+				2CBB7F641368BDDB00A762CB /* InternationalRootViewController.m in Sources */,
+				2CBB7F921368E12D00A762CB /* ThesisViewController.m in Sources */,
+				2CBB7F9A1368ED5F00A762CB /* StructureViewController.m in Sources */,
+				2CBB7FA81368F6FE00A762CB /* BiographyViewController.m in Sources */,
+				2C5A33221368FEBD00095E37 /* DrugMapViewController.m in Sources */,
+				2CB50BAC142F909200CA4771 /* MagazineRootViewController.m in Sources */,
+				2CB50BBE142FAFC500CA4771 /* PublicationController.m in Sources */,
+				2CB50BD2142FBB3D00CA4771 /* ioapi.c in Sources */,
+				2CB50BD3142FBB3D00CA4771 /* mztools.c in Sources */,
+				2CB50BD4142FBB3D00CA4771 /* unzip.c in Sources */,
+				2CB50BD5142FBB3D00CA4771 /* zip.c in Sources */,
+				2CB50BDE142FBBF700CA4771 /* Reachability.m in Sources */,
+				2CB50BDF142FBBF700CA4771 /* SSZipArchive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +736,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -225,7 +754,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -284,6 +813,7 @@
 				2CF86D851360EDBD00292FD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,9 +6,16 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+@interface BackButton : UIBarButtonItem {
+@private
+}
+@end
+
 #import "DetailViewController.h"
 
 #import "RootViewController.h"
+
+#import "FSKN_2AppDelegate.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -17,6 +24,8 @@
 
 @implementation DetailViewController
 
+@synthesize webView, listOfFiles, navi;
+
 @synthesize toolbar=_toolbar;
 
 @synthesize detailItem=_detailItem;
@@ -24,6 +33,13 @@
 @synthesize detailDescriptionLabel=_detailDescriptionLabel;
 
 @synthesize popoverController=_myPopoverController;
+
+-(void)awakeFromNib
+{
+    NSArray *files = [[NSArray alloc] initWithObjects:@"Info1", @"Info2", @"Info3", nil];
+    self.listOfFiles = files;
+    [files release];
+}
 
 #pragma mark - Managing the detail item
 
@@ -35,11 +51,10 @@
     if (_detailItem != newDetailItem) {
         [_detailItem release];
         _detailItem = [newDetailItem retain];
-        
-        // Update the view.
-        [self configureView];
     }
-
+    
+    [self configureView];
+    
     if (self.popoverController != nil) {
         [self.popoverController dismissPopoverAnimated:YES];
     }        
@@ -47,9 +62,14 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
-    self.detailDescriptionLabel.text = [self.detailItem description];
+    
+    NSNumber *num = (NSNumber *)_detailItem;
+    NSUInteger n = (NSUInteger)[num unsignedIntValue];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:[listOfFiles objectAtIndex:n] ofType:@"html"];
+    NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    [webView loadHTMLString:content baseURL:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,7 +93,7 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 #pragma mark - Split view support
@@ -98,13 +118,13 @@
     self.popoverController = nil;
 }
 
-/*
  // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 }
- */
 
 - (void)viewDidUnload
 {
@@ -127,11 +147,30 @@
 
 - (void)dealloc
 {
+    [navi release];
+    [listOfFiles release];
+    [webView release];
     [_myPopoverController release];
     [_toolbar release];
     [_detailItem release];
     [_detailDescriptionLabel release];
     [super dealloc];
+}
+
+- (IBAction)backButtonClicked
+{
+    FSKN_2AppDelegate *delegate = (FSKN_2AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [delegate goToMain];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)aWebView
+{
+    // prevent uiwebview from bouncing vertically
+    for (id subview in webView.subviews) {
+        if ([[subview class] isSubclassOfClass:[UIScrollView class]]) {
+            ((UIScrollView *)subview).bounces = NO;
+        }
+    }
 }
 
 @end

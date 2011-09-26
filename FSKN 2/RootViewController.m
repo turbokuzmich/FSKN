@@ -12,11 +12,20 @@
 
 @implementation RootViewController
 		
-@synthesize detailViewController;
+@synthesize detailViewController, list;
+
+-(void)awakeFromNib
+{
+    NSArray *contents = [[NSArray alloc] initWithObjects:@"Выступление Президента Российской Федерации Д.А. Медведева на заседании Совета Безопасности Российской Федерации 8 сентября 2009 года", @"Из решения Совета Безопасности Российской Федерации от 8 сентября 2009 года", @"Указ Президента Российской Федерации N 690 от 9 июня 2010 года Об утверждении Стратегии государственной антинаркотической политики Российской Федерации до 2020 года", nil];
+    self.list = contents;
+    [contents release];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Оглавление";
+    self.view.backgroundColor = [UIColor colorWithRed:0.83 green:0.843 blue:0.87 alpha:1.0];
     self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
 }
@@ -25,6 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    detailViewController.detailItem = [[NSNumber alloc] initWithUnsignedInt:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -49,14 +59,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-    		
 }
 
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
-    		
+    return [list count];
 }
 
 		
@@ -68,10 +76,21 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-
-    // Configure the cell.
+    
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.text = (NSString *)[self.list objectAtIndex:indexPath.row];
     		
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellText = (NSString *)[list objectAtIndex:indexPath.row];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:21.0];
+    CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+    CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    return labelSize.height + 20.0f;
 }
 
 /*
@@ -116,6 +135,8 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    
+    detailViewController.detailItem = [[NSNumber alloc] initWithUnsignedInt:indexPath.row];
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,6 +155,7 @@
 
 - (void)dealloc
 {
+    [list release];
     [detailViewController release];
     [super dealloc];
 }

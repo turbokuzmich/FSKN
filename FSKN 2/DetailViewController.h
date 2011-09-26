@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
+@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UIWebViewDelegate> {
 
 }
 
+- (IBAction)backButtonClicked;
+
+@property (nonatomic, retain) IBOutlet UINavigationBar *navi;
+
+@property (nonatomic, retain) NSArray *listOfFiles;
+
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 

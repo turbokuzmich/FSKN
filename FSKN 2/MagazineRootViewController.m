@@ -9,10 +9,25 @@
 #import "MagazineRootViewController.h"
 #import "PublicationController.h"
 #import "FSKN_2AppDelegate.h"
+#import "SSZipArchive.h"
+#import "Reachability.h"
+
+BOOL publicationsLoadingInProgress = NO;
+NSURLConnection *publicationsXmlConnection;      // соединение по получению xml с сервера
+NSMutableData *publicationsXmlData;              // данные, полученные с сервера (потом парсятся как xml)
+NSMutableArray *remotePublicationList;           // массив из объектов публикаций
+NSMutableDictionary *currentRemotePublication;   // текущая публикация
+NSString* currentRemotePublicationPropertyName;  // текущее свойство публикации
+NSString* currentRemotePublicationPropertyValue; // текущее значение текущего свойства
+NSMutableArray *missingPublications;             // отсутствующие локально публикации (список их айдишников)
+NSMutableArray *publicationDownloadConnections;  // массив открытых соединений по скачиванию журналов
+NSMutableArray *publicationDownloadData;         // массив полученных данных скачиваемых публикаций
+int missingCount = 0;
 
 @implementation MagazineRootViewController
 
 @synthesize localPublications = _localPublications;
+@synthesize wantPublicationsButton = _wantPublicationsButton;
 @synthesize titleFont = _titleFont, urlFont = _urlFont;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -44,6 +59,8 @@
     
     _titleFont = [[UIFont fontWithName:@"Georgia" size:20.0f] retain];
     _urlFont   = [[UIFont fontWithName:@"Verdana" size:10.0f] retain];
+    
+    internetReachable = [[Reachability reachabilityForInternetConnection] retain];
 }
 
 - (void)viewDidUnload
@@ -52,9 +69,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     
-    _localPublications = nil;
-    _titleFont = nil;
-    _urlFont = nil;
+    self.wantPublicationsButton = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,6 +101,17 @@
 
 - (void)dealloc
 {
+    [internetReachable release];
+    [publicationsXmlConnection release];
+    [publicationsXmlData release];
+    [remotePublicationList release];
+    [currentRemotePublication release];
+    [currentRemotePublicationPropertyName release];
+    [currentRemotePublicationPropertyValue release];
+    [missingPublications release];
+    [publicationDownloadConnections release];
+    [publicationDownloadData release];
+    [_wantPublicationsButton release];
     [_localPublications release];
     [_titleFont release];
     [_urlFont release];
@@ -155,9 +181,10 @@
     [self.navigationController pushViewController:publicationController animated:YES];
 }
 
+
+
 - (void)updateLocalPublications
 {
-    [_localPublications release];
     self.localPublications = [NSMutableArray array];
     
     NSFileManager *df = [NSFileManager defaultManager];
@@ -179,6 +206,266 @@
     }
     
     [(UITableView *)self.view reloadData];
+}
+
+
+
+- (BOOL)checkNetworkStatus
+{
+    if (publicationsLoadingInProgress) return NO;
+    
+    BOOL internetOk = NO;
+    
+    NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    switch (internetStatus) {
+        case ReachableViaWiFi:
+        case ReachableViaWWAN:
+            internetOk = YES;
+            break;
+            
+        default:
+            internetOk = NO;
+            break;
+    }
+    
+    return internetOk;
+}
+
+
+
+- (void)loadPublicationsXml
+{
+    publicationsLoadingInProgress = YES;
+    
+    NSURL *publicationsXmlUrl = [NSURL URLWithString:@"http://dima2.local.crmm.ru/publications.list.xml"];
+    NSURLRequest *publicationsXmlRequest = [NSURLRequest requestWithURL:publicationsXmlUrl];
+    publicationsXmlConnection = [[NSURLConnection alloc] initWithRequest:publicationsXmlRequest delegate:self];
+    publicationsXmlData = [[NSMutableData alloc] init];
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    if ([elementName isEqualToString:@"publications"]) {
+        if (!remotePublicationList) {
+            remotePublicationList = [[NSMutableArray alloc] init];
+        }
+    } else if([elementName isEqualToString:@"item"]) {
+        currentRemotePublication = [[NSMutableDictionary alloc] init];
+    } else {
+        currentRemotePublicationPropertyName = elementName;
+        [currentRemotePublicationPropertyName retain];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    currentRemotePublicationPropertyValue = string;
+    [currentRemotePublicationPropertyValue retain];
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if ([elementName isEqualToString:@"publications"]) {
+        // вроде закончили
+    } else if ([elementName isEqualToString:@"item"]) {
+        [remotePublicationList addObject:currentRemotePublication];
+        [currentRemotePublication release];
+    } else {
+        [currentRemotePublication setObject:currentRemotePublicationPropertyValue forKey:currentRemotePublicationPropertyName];
+        [currentRemotePublicationPropertyName release];
+        [currentRemotePublicationPropertyValue release];
+    }
+}
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    [parser release];
+    
+    [self showStatusWithMessage:@"Разбор завершен. Сравниваю с локальным списком."];
+    
+    [self checkLocalPublicationsList];
+}
+
+- (void)checkLocalPublicationsList
+{
+    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectoryPath = [directories objectAtIndex:0];
+    
+    for (id publicationData in remotePublicationList) {
+        NSString *ID = (NSString *)[(NSDictionary *)publicationData objectForKey:@"id"];
+        NSString *localPublicationPath = [documentDirectoryPath stringByAppendingPathComponent:ID];
+        
+        BOOL publicationExists = [[NSFileManager defaultManager] fileExistsAtPath:localPublicationPath isDirectory:nil];
+        if (!publicationExists) {
+            missingCount++;
+            if (!missingPublications) {
+                missingPublications = [[NSMutableArray alloc] init];
+            }
+            [missingPublications addObject:ID];
+        }
+    }
+    
+    if (missingCount) {
+        NSString *message = @"Отсутствующих публикаций: %i. Скачиваю.";
+        message = [NSString stringWithFormat:message, missingCount];
+        
+        [self showStatusWithMessage:message];
+        
+        [self downloadMissingPublications];
+    } else {
+        [self showStatusWithMessage:@"Все публикации скачены."];
+        [self disableWantPublicationsButton];
+        publicationsLoadingInProgress = NO;
+    }
+    
+    
+}
+
+- (void)downloadMissingPublications
+{
+    NSString *pathPrefix = @"http://dima2.local.crmm.ru/publications/%@.zip";
+    
+    for (id ID in missingPublications) {
+        NSString *remotePathString = [NSString stringWithFormat:pathPrefix, ID];
+        NSURL *remotePath = [NSURL URLWithString:remotePathString];
+        NSURLRequest *remoteRequest = [NSURLRequest requestWithURL:remotePath];
+        NSURLConnection *connection = [NSURLConnection connectionWithRequest:remoteRequest delegate:self];
+        
+        if (!publicationDownloadConnections) {
+            publicationDownloadConnections = [[NSMutableArray alloc] init];
+        }
+        
+        [publicationDownloadConnections addObject:connection];
+        
+        if (!publicationDownloadData) {
+            publicationDownloadData = [[NSMutableArray alloc] init];
+        }
+        NSMutableData *data = [NSMutableData data];
+        [data setLength:0];
+        [publicationDownloadData addObject:data];
+    }
+}
+
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    if (connection == publicationsXmlConnection) {
+        [self showStatusWithMessage:@"Не удалось получить список публикаций"];
+        
+        [publicationsXmlConnection release];
+        [publicationsXmlData release];
+    } else {
+        NSUInteger connectionIndex = [publicationDownloadConnections indexOfObjectIdenticalTo:connection];
+        if (connectionIndex != NSNotFound) {
+            [self showStatusWithMessage:[NSString stringWithFormat:@"Не удалось загрузить публикацию %@.", [missingPublications objectAtIndex:connectionIndex]]];
+        }
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    if (connection == publicationsXmlConnection) {
+        [publicationsXmlData setLength:0];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    if (connection == publicationsXmlConnection) {
+        [publicationsXmlData appendData:data];
+    } else {
+        NSUInteger connectionIndex = [publicationDownloadConnections indexOfObjectIdenticalTo:connection];
+        if (connectionIndex != NSNotFound) {
+            NSMutableData *d = [publicationDownloadData objectAtIndex:connectionIndex];
+            [d appendData:data];
+        }
+    }
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    if (connection == publicationsXmlConnection) {
+        [publicationsXmlConnection release];
+        
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:publicationsXmlData];
+        [publicationsXmlData release];
+        
+        [self showStatusWithMessage:@"Список получен. Разбираю."];
+        [parser setDelegate:self];
+        [parser parse];
+    } else {
+        NSUInteger connectionIndex = [publicationDownloadConnections indexOfObjectIdenticalTo:connection];
+        
+        if (connectionIndex != NSNotFound) {
+            NSMutableData *data = [publicationDownloadData objectAtIndex:connectionIndex];
+            NSString *ID = [missingPublications objectAtIndex:connectionIndex];
+            
+            NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectoryPath = [directories objectAtIndex:0];
+            NSString *zipDestination = [[documentDirectoryPath stringByAppendingPathComponent:ID] stringByAppendingString:@".zip"];
+            
+            [[NSFileManager defaultManager] createFileAtPath:zipDestination contents:data attributes:nil];
+            
+            NSString *folderDestination = [documentDirectoryPath stringByAppendingPathComponent:ID];
+            [SSZipArchive unzipFileAtPath:zipDestination toDestination:folderDestination];
+            
+            [[NSFileManager defaultManager] removeItemAtPath:zipDestination error:nil];
+            
+            missingCount--;
+            
+            if (missingCount == 0) {
+                [self showStatusWithMessage:@"Все публикации скачены."];
+                
+                publicationsLoadingInProgress = NO;
+                
+                [self disableWantPublicationsButton];
+                
+                [self updateLocalPublications];
+            }
+        }
+    }
+}
+
+
+
+- (void)showStatusWithMessage:(NSString *)message
+{
+    
+    NSLog(@"%@", message);
+}
+
+
+
+- (void)wantsPublications:(id)sender
+{
+    BOOL hasInternet = [self checkNetworkStatus];
+    if (hasInternet) {
+        _wantPublicationsButton.title = @"Публикации скачиваются...";
+        _wantPublicationsButton.enabled = NO;
+        [self loadPublicationsXml];
+        [self showStatusWithMessage:@"Есть подключение. Получаю список публикаций."];
+    } else {
+        [self showStatusWithMessage:@"Доступ в интернет отсутствует."];
+        _wantPublicationsButton.title = @"Отсутствует доступ в Интернет";
+        _wantPublicationsButton.enabled = NO;
+        [self performSelector:@selector(restoreWantPublicationsButton) withObject:self afterDelay:3.0f];
+    }
+}
+
+- (void)disableWantPublicationsButton
+{
+    _wantPublicationsButton.title = @"Все публикации скачены";
+    _wantPublicationsButton.enabled = NO;
+    
+    [self performSelector:@selector(restoreWantPublicationsButton) withObject:self afterDelay:3.0f];
+}
+
+
+- (void)restoreWantPublicationsButton
+{
+    _wantPublicationsButton.enabled = YES;
+    _wantPublicationsButton.title = @"Обновить список журналов";
 }
 
 @end

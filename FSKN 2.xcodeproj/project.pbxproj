@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C141A8F1430626A008E465B /* magazinetab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C141A8E1430626A008E465B /* magazinetab.png */; };
 		2C4D00DC13612F53008157BE /* st2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C4D00DA13612F53008157BE /* st2.jpg */; };
 		2C4D00DD13612F53008157BE /* st1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C4D00DB13612F53008157BE /* st1.jpg */; };
 		2C4D00E413612F73008157BE /* Statistics1Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00DE13612F73008157BE /* Statistics1Text.m */; };
@@ -115,6 +116,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C141A8E1430626A008E465B /* magazinetab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magazinetab.png; sourceTree = "<group>"; };
 		2C4D00DA13612F53008157BE /* st2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st2.jpg; sourceTree = "<group>"; };
 		2C4D00DB13612F53008157BE /* st1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st1.jpg; sourceTree = "<group>"; };
 		2C4D00DE13612F73008157BE /* Statistics1Text.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistics1Text.m; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		2C7F3153136115F3009071A0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2C141A8E1430626A008E465B /* magazinetab.png */,
 				2C5A33391369208C00095E37 /* appicon.png */,
 				2C5A33311369186700095E37 /* saratovbubble.png */,
 				2C5A33321369186700095E37 /* novosibbubble.png */,
@@ -664,6 +667,7 @@
 				2C5A333A1369208C00095E37 /* appicon.png in Resources */,
 				2CB50BAD142F909200CA4771 /* MagazineRootViewController.xib in Resources */,
 				2CB50BBF142FAFC500CA4771 /* PublicationController.xib in Resources */,
+				2C141A8F1430626A008E465B /* magazinetab.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

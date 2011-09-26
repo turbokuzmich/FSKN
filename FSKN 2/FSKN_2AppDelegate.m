@@ -82,11 +82,8 @@
     // Override point for customization after application launch.
     // Add the split view controller's view to the window and display.
     
-    //self.startScreenWindow.rootViewController = self.startScreenViewController;
-    //[self.startScreenWindow makeKeyAndVisible];
-    
-    self.magazineWindow.rootViewController = self.magazineNavigationController;
-    [self.magazineWindow makeKeyAndVisible];
+    self.startScreenWindow.rootViewController = self.startScreenViewController;
+    [self.startScreenWindow makeKeyAndVisible];
     
     return YES;
 }
@@ -231,6 +228,12 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Видео" message:@"К сожалению, данная функция пока не работает" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
     [alert release];
+}
+
+- (void)goToMagazine
+{
+    self.magazineWindow.rootViewController = self.magazineNavigationController;
+    [self.magazineWindow makeKeyAndVisible];
 }
 
 

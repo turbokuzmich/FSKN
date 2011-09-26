@@ -92,6 +92,7 @@
 - (IBAction)goToStrategy;
 - (IBAction)goToBiography;
 - (IBAction)goToDrugMap;
+- (IBAction)goToMagazine;
 
 
 @end

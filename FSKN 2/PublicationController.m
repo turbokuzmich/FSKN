@@ -107,9 +107,6 @@
     for (int i = 0; i < pagesCount; i++) {
         [(UIWebView *)[webViews objectAtIndex:i] setFrame:CGRectMake(i * self.view.bounds.size.width, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
     }
-    
-    UIScrollView *scroll = (UIScrollView *)self.view;
-    NSLog(@"%f", scroll.contentOffset.x);
 }
 
 - (void)dealloc

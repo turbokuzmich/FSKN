@@ -36,7 +36,7 @@
 
 -(void)awakeFromNib
 {
-    NSArray *files = [[NSArray alloc] initWithObjects:@"Info1", @"Info2", @"Info3", nil];
+    NSArray *files = [[NSArray alloc] initWithObjects:@"Info1", @"Info2", @"Info3", @"Info4", @"Info5", nil];
     self.listOfFiles = files;
     [files release];
 }

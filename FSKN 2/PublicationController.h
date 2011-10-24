@@ -10,6 +10,6 @@
 
 @interface PublicationController : UIViewController
 
-@property (nonatomic, retain) NSNumber *num;
+@property (nonatomic, retain) NSString *num;
 
 @end

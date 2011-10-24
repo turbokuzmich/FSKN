@@ -11,24 +11,25 @@
 #import "FSKN_2AppDelegate.h"
 #import "SSZipArchive.h"
 #import "Reachability.h"
+#import "DownloaderTableViewCell.h"
 
-BOOL publicationsLoadingInProgress = NO;
+BOOL remoteXMLLoading = NO;
 NSURLConnection *publicationsXmlConnection;      // соединение по получению xml с сервера
 NSMutableData *publicationsXmlData;              // данные, полученные с сервера (потом парсятся как xml)
 NSMutableArray *remotePublicationList;           // массив из объектов публикаций
 NSMutableDictionary *currentRemotePublication;   // текущая публикация
 NSString* currentRemotePublicationPropertyName;  // текущее свойство публикации
 NSString* currentRemotePublicationPropertyValue; // текущее значение текущего свойства
-NSMutableArray *missingPublications;             // отсутствующие локально публикации (список их айдишников)
 NSMutableArray *publicationDownloadConnections;  // массив открытых соединений по скачиванию журналов
+NSMutableArray *publicationDownloadIndexPaths;   // массив индекспутей ячеек, для которых идет скачивание
 NSMutableArray *publicationDownloadData;         // массив полученных данных скачиваемых публикаций
-int missingCount = 0;
+NSMutableDictionary *publicationCoversCache;     // кеш картинок для нескаченных публикаций (ключ — indexPath)
 
 @implementation MagazineRootViewController
 
 @synthesize localPublications = _localPublications;
 @synthesize wantPublicationsButton = _wantPublicationsButton;
-@synthesize titleFont = _titleFont, urlFont = _urlFont;
+@synthesize imageLoadOperationQueue;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -55,12 +56,18 @@ int missingCount = 0;
     
     self.navigationController.toolbarHidden = NO;
     
+    internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+    
+    imageLoadOperationQueue = [[NSOperationQueue alloc] init];
+    
+    // делаем список уже скаченных публикаций
     [self updateLocalPublications];
     
-    _titleFont = [[UIFont fontWithName:@"Georgia" size:20.0f] retain];
-    _urlFont   = [[UIFont fontWithName:@"Verdana" size:10.0f] retain];
-    
-    internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+    BOOL hasInternet = [self checkNetworkStatus];
+    if (hasInternet) {
+        // если есть интернет, то сразу пытаемся загрузить список публикаций из интернета
+        [self loadPublicationsXml];
+    }
 }
 
 - (void)viewDidUnload
@@ -108,13 +115,12 @@ int missingCount = 0;
     [currentRemotePublication release];
     [currentRemotePublicationPropertyName release];
     [currentRemotePublicationPropertyValue release];
-    [missingPublications release];
     [publicationDownloadConnections release];
     [publicationDownloadData release];
+    [imageLoadOperationQueue release];
+    [publicationCoversCache release];
     [_wantPublicationsButton release];
     [_localPublications release];
-    [_titleFont release];
-    [_urlFont release];
     [super dealloc];
 }
 
@@ -127,64 +133,131 @@ int missingCount = 0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_localPublications count];
+    int numberOfRows = 0;
+    if (remotePublicationList == nil) {
+        numberOfRows = (int)[self.localPublications count];
+    } else {
+        numberOfRows = (int)[remotePublicationList count];
+    }
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *topLevelElements = [[NSBundle mainBundle] loadNibNamed:@"DownloaderTableViewCell" owner:nil options:nil];
+        cell = [topLevelElements objectAtIndex:0];
     }
     
-    NSDictionary *cellData = (NSDictionary *)[self.localPublications objectAtIndex:indexPath.row];
-    NSString *title = [cellData valueForKey:@"title"];
-    NSString *url = [cellData valueForKey:@"url"];
-    
-    CGSize titleSize = [title sizeWithFont:self.titleFont forWidth:MAXFLOAT lineBreakMode:UILineBreakModeTailTruncation];
-    CGSize urlSize = [url sizeWithFont:self.urlFont forWidth:MAXFLOAT lineBreakMode:UILineBreakModeTailTruncation];
-    
-    CGRect titleRect = CGRectMake(5.0f, 2.0f, 280.0f, titleSize.height);
-    CGRect urlRect = CGRectMake(5.0f, titleSize.height + 5.0f, 280.0f, urlSize.height);
-    
-    UILabel *titleLabel = [[[UILabel alloc] initWithFrame:titleRect] autorelease];
-    UILabel *urlLabel = [[[UILabel alloc] initWithFrame:urlRect] autorelease];
-    
-    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    titleLabel.font = self.titleFont;
-    titleLabel.text = title;
-    
-    urlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    urlLabel.font = self.urlFont;
-    urlLabel.text = url;
-    urlLabel.textColor = [UIColor grayColor];
-    
-    [cell.contentView addSubview:titleLabel];
-    [cell.contentView addSubview:urlLabel];
+    if (remotePublicationList == nil) {
+        NSDictionary *cellData = (NSDictionary *)[self.localPublications objectAtIndex:[indexPath row]];
+        NSString *ID = [cellData valueForKey:@"id"];
+        
+        cell.titleLabel.text = (NSString *)[cellData valueForKey:@"title"];
+        cell.dateLabel.text = (NSString *)[cellData valueForKey:@"date"];
+        
+        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectoryPath = [directories objectAtIndex:0];
+        NSString *coverPath = [[documentDirectoryPath stringByAppendingPathComponent:ID] stringByAppendingPathComponent:@"cover.jpg"];
+        NSData *coverData = [NSData dataWithContentsOfFile:coverPath];
+        UIImage *coverImage = [UIImage imageWithData:coverData];
+        cell.coverView.image = coverImage;
+        cell.coverView.hidden = NO;
+    } else {
+        NSDictionary *cellData = (NSDictionary *)[remotePublicationList objectAtIndex:[indexPath row]];
+        NSString *ID = [cellData valueForKey:@"id"];
+        
+        BOOL isDownloaded = NO;
+        for (NSDictionary *downloadedPub in self.localPublications) {
+            if ([(NSString *)[downloadedPub valueForKey:@"id"] isEqualToString:ID]) {
+                isDownloaded = YES;
+            }
+        }
+        
+        cell.titleLabel.text = (NSString *)[cellData valueForKey:@"title"];
+        cell.dateLabel.text = (NSString *)[cellData valueForKey:@"date"];
+        
+        if (isDownloaded) {
+            NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectoryPath = [directories objectAtIndex:0];
+            NSString *coverPath = [[documentDirectoryPath stringByAppendingPathComponent:ID] stringByAppendingPathComponent:@"cover.jpg"];
+            NSData *coverData = [NSData dataWithContentsOfFile:coverPath];
+            UIImage *coverImage = [UIImage imageWithData:coverData];
+            cell.coverView.image = coverImage;
+            cell.coverView.hidden = NO;
+        } else {
+            BOOL isLoading = NO;
+            for (NSIndexPath *p in publicationDownloadIndexPaths) {
+                if (p.row == indexPath.row) {
+                    isLoading = YES;
+                }
+            }
+            
+            if (isLoading) {
+                cell.downloadLabel.hidden = NO;
+            } else {
+                cell.downloadButton.hidden = NO;
+                [cell.downloadButton addTarget:self action:@selector(loadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                UIImage *cachedImage = nil;
+                if (publicationCoversCache != nil) {
+                    for (NSIndexPath *p in publicationCoversCache) {
+                        if (p.row == indexPath.row) {
+                            cachedImage = [publicationCoversCache objectForKey:p];
+                        }
+                    }
+                }
+                
+                if (cachedImage == nil) {
+                    [self loadImageForCellAtIndex:indexPath withPath:(NSString *)[cellData valueForKey:@"cover"]];
+                } else {
+                    cell.coverView.image = cachedImage;
+                    cell.coverView.hidden = NO;
+                }
+            }
+        }
+    }
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ([[NSString stringWithString:@"a"] sizeWithFont:self.titleFont forWidth:MAXFLOAT lineBreakMode:UILineBreakModeTailTruncation]).height + ([[NSString stringWithString:@"a"] sizeWithFont:self.urlFont forWidth:MAXFLOAT lineBreakMode:UILineBreakModeTailTruncation]).height + 10.0f;
+    return 70.0f;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PublicationController *publicationController = [[[PublicationController alloc] initWithNibName:@"PublicationController" bundle:nil] autorelease];
-    publicationController.num = [NSNumber numberWithUnsignedInteger:indexPath.row + 1];
-    [self.navigationController pushViewController:publicationController animated:YES];
+    NSString *num = nil;
+    if (remotePublicationList == nil) {
+        num = (NSString *)[(NSDictionary *)[self.localPublications objectAtIndex:[indexPath row]] valueForKey:@"id"];
+    } else {
+        NSString *ID = (NSString *)[(NSDictionary *)[remotePublicationList objectAtIndex:[indexPath row]] valueForKey:@"id"];
+        for (NSDictionary *pub in self.localPublications) {
+            if ([[pub valueForKey:@"id"] isEqualToString:ID]) {
+                num = ID;
+                break;
+            }
+        }
+    }
+    
+    if (num != nil) {
+        PublicationController *publicationController = [[[PublicationController alloc] initWithNibName:@"PublicationController" bundle:nil] autorelease];
+        publicationController.num = num;
+        [self.navigationController pushViewController:publicationController animated:YES];
+    }
 }
 
 
 
 - (void)updateLocalPublications
 {
+    self.localPublications = nil;
     self.localPublications = [NSMutableArray array];
     
     NSFileManager *df = [NSFileManager defaultManager];
@@ -195,25 +268,32 @@ int missingCount = 0;
     
     for (NSString *dir in dirs) {
         NSString *configPath = [[documentDir stringByAppendingPathComponent:dir] stringByAppendingPathComponent:@"config"];
+        NSString *coverPath = [[documentDir stringByAppendingPathComponent:dir] stringByAppendingPathComponent:@"cover.jpg"];
         if ([df fileExistsAtPath:configPath]) {
             NSString *contents = [NSString stringWithUTF8String:[[df contentsAtPath:configPath] bytes]];
             NSArray *publicationParamsArray = [contents componentsSeparatedByString:@"\n"];
             NSString *publicationName = [publicationParamsArray objectAtIndex:0];
-            NSString *publicationUrl = [publicationParamsArray objectAtIndex:1];
-            NSDictionary *publicationParams = [NSDictionary dictionaryWithObjectsAndKeys:publicationName, @"title", publicationUrl, @"url", nil];
+            NSString *publicationDate = [publicationParamsArray objectAtIndex:1];
+            
+            NSDictionary *publicationParams;
+            if ([df fileExistsAtPath:coverPath]) {
+                publicationParams = [NSDictionary dictionaryWithObjectsAndKeys:dir, @"id", publicationName, @"title", publicationDate, @"date", coverPath, @"cover", nil];
+            } else {
+                publicationParams = [NSDictionary dictionaryWithObjectsAndKeys:dir, @"id", publicationName, @"title", publicationDate, @"date", @"", @"cover", nil];
+            }
+            
+            
             [_localPublications addObject:publicationParams];
         }
     }
     
-    [(UITableView *)self.view reloadData];
+    [self.tableView reloadData];
 }
 
 
 
 - (BOOL)checkNetworkStatus
 {
-    if (publicationsLoadingInProgress) return NO;
-    
     BOOL internetOk = NO;
     
     NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
@@ -235,7 +315,7 @@ int missingCount = 0;
 
 - (void)loadPublicationsXml
 {
-    publicationsLoadingInProgress = YES;
+    remoteXMLLoading = YES;
     
     NSURL *publicationsXmlUrl = [NSURL URLWithString:@"http://dima2.local.crmm.ru/publications.list.xml"];
     NSURLRequest *publicationsXmlRequest = [NSURLRequest requestWithURL:publicationsXmlUrl];
@@ -246,9 +326,10 @@ int missingCount = 0;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
     if ([elementName isEqualToString:@"publications"]) {
-        if (!remotePublicationList) {
-            remotePublicationList = [[NSMutableArray alloc] init];
+        if (remotePublicationList != nil) {
+            [remotePublicationList release];
         }
+        remotePublicationList = [[NSMutableArray alloc] init];
     } else if([elementName isEqualToString:@"item"]) {
         currentRemotePublication = [[NSMutableDictionary alloc] init];
     } else {
@@ -279,72 +360,17 @@ int missingCount = 0;
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    [parser release];
+    [parser autorelease];
     
-    [self showStatusWithMessage:@"Разбор завершен. Сравниваю с локальным списком."];
+    [self showStatusWithMessage:@"Разбор завершен. Перестраиваю таблицу."];
     
-    [self checkLocalPublicationsList];
+    remoteXMLLoading = NO;
+    
+    [self.tableView reloadData];
+    
+    [self disableWantPublicationsButton];
 }
 
-- (void)checkLocalPublicationsList
-{
-    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectoryPath = [directories objectAtIndex:0];
-    
-    for (id publicationData in remotePublicationList) {
-        NSString *ID = (NSString *)[(NSDictionary *)publicationData objectForKey:@"id"];
-        NSString *localPublicationPath = [documentDirectoryPath stringByAppendingPathComponent:ID];
-        
-        BOOL publicationExists = [[NSFileManager defaultManager] fileExistsAtPath:localPublicationPath isDirectory:nil];
-        if (!publicationExists) {
-            missingCount++;
-            if (!missingPublications) {
-                missingPublications = [[NSMutableArray alloc] init];
-            }
-            [missingPublications addObject:ID];
-        }
-    }
-    
-    if (missingCount) {
-        NSString *message = @"Отсутствующих публикаций: %i. Скачиваю.";
-        message = [NSString stringWithFormat:message, missingCount];
-        
-        [self showStatusWithMessage:message];
-        
-        [self downloadMissingPublications];
-    } else {
-        [self showStatusWithMessage:@"Все публикации скачены."];
-        [self disableWantPublicationsButton];
-        publicationsLoadingInProgress = NO;
-    }
-    
-    
-}
-
-- (void)downloadMissingPublications
-{
-    NSString *pathPrefix = @"http://dima2.local.crmm.ru/publications/%@.zip";
-    
-    for (id ID in missingPublications) {
-        NSString *remotePathString = [NSString stringWithFormat:pathPrefix, ID];
-        NSURL *remotePath = [NSURL URLWithString:remotePathString];
-        NSURLRequest *remoteRequest = [NSURLRequest requestWithURL:remotePath];
-        NSURLConnection *connection = [NSURLConnection connectionWithRequest:remoteRequest delegate:self];
-        
-        if (!publicationDownloadConnections) {
-            publicationDownloadConnections = [[NSMutableArray alloc] init];
-        }
-        
-        [publicationDownloadConnections addObject:connection];
-        
-        if (!publicationDownloadData) {
-            publicationDownloadData = [[NSMutableArray alloc] init];
-        }
-        NSMutableData *data = [NSMutableData data];
-        [data setLength:0];
-        [publicationDownloadData addObject:data];
-    }
-}
 
 
 
@@ -358,7 +384,10 @@ int missingCount = 0;
     } else {
         NSUInteger connectionIndex = [publicationDownloadConnections indexOfObjectIdenticalTo:connection];
         if (connectionIndex != NSNotFound) {
-            [self showStatusWithMessage:[NSString stringWithFormat:@"Не удалось загрузить публикацию %@.", [missingPublications objectAtIndex:connectionIndex]]];
+            [self showStatusWithMessage:[NSString stringWithFormat:@"Не удалось загрузить публикацию %d.", connectionIndex]];
+            [publicationDownloadConnections removeObjectAtIndex:connectionIndex];
+            [publicationDownloadData removeObjectAtIndex:connectionIndex];
+            [publicationDownloadIndexPaths removeObjectAtIndex:connectionIndex];
         }
     }
 }
@@ -367,6 +396,17 @@ int missingCount = 0;
 {
     if (connection == publicationsXmlConnection) {
         [publicationsXmlData setLength:0];
+    } else {
+        NSUInteger connectionIndex = [publicationDownloadConnections indexOfObjectIdenticalTo:connection];
+        if (connectionIndex != NSNotFound) {
+            NSMutableData *d = [publicationDownloadData objectAtIndex:connectionIndex];
+            [d setLength:0];
+            
+            NSIndexPath *path = [publicationDownloadIndexPaths objectAtIndex:connectionIndex];
+            DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
+            cell.downloadButton.hidden = YES;
+            cell.downloadLabel.hidden = NO;
+        }
     }
 }
 
@@ -386,9 +426,9 @@ int missingCount = 0;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     if (connection == publicationsXmlConnection) {
-        [publicationsXmlConnection release];
-        
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:publicationsXmlData];
+        
+        [publicationsXmlConnection release];
         [publicationsXmlData release];
         
         [self showStatusWithMessage:@"Список получен. Разбираю."];
@@ -399,7 +439,9 @@ int missingCount = 0;
         
         if (connectionIndex != NSNotFound) {
             NSMutableData *data = [publicationDownloadData objectAtIndex:connectionIndex];
-            NSString *ID = [missingPublications objectAtIndex:connectionIndex];
+            NSIndexPath *path = [publicationDownloadIndexPaths objectAtIndex:connectionIndex];
+            NSDictionary *cellData = (NSDictionary *)[remotePublicationList objectAtIndex:[path row]];
+            NSString *ID = (NSString *)[cellData valueForKey:@"id"];
             
             NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentDirectoryPath = [directories objectAtIndex:0];
@@ -412,17 +454,13 @@ int missingCount = 0;
             
             [[NSFileManager defaultManager] removeItemAtPath:zipDestination error:nil];
             
-            missingCount--;
+            [publicationDownloadConnections removeObjectAtIndex:connectionIndex];
+            [publicationDownloadData removeObjectAtIndex:connectionIndex];
+            [publicationDownloadIndexPaths removeObjectAtIndex:connectionIndex];
             
-            if (missingCount == 0) {
-                [self showStatusWithMessage:@"Все публикации скачены."];
-                
-                publicationsLoadingInProgress = NO;
-                
-                [self disableWantPublicationsButton];
-                
-                [self updateLocalPublications];
-            }
+            [self showStatusWithMessage:@"Публикация скачена"];
+            
+            [self updateLocalPublications];
         }
     }
 }
@@ -439,15 +477,28 @@ int missingCount = 0;
 
 - (void)wantsPublications:(id)sender
 {
-    BOOL hasInternet = [self checkNetworkStatus];
-    if (hasInternet) {
-        _wantPublicationsButton.title = @"Публикации скачиваются...";
-        _wantPublicationsButton.enabled = NO;
-        [self loadPublicationsXml];
-        [self showStatusWithMessage:@"Есть подключение. Получаю список публикаций."];
+    if (!remoteXMLLoading) {
+        BOOL hasInternet = [self checkNetworkStatus];
+        if (hasInternet) {
+            BOOL downloading = [self publicationsAreDownloading];
+            if (downloading) {
+                _wantPublicationsButton.title = @"Дождитесь скачки всех публикаций";
+                _wantPublicationsButton.enabled = NO;
+                [self performSelector:@selector(restoreWantPublicationsButton) withObject:self afterDelay:3.0f];
+            } else {
+                _wantPublicationsButton.title = @"Получаю список публикаций";
+                _wantPublicationsButton.enabled = NO;
+                [self loadPublicationsXml];
+                [self showStatusWithMessage:@"Есть подключение. Получаю список публикаций."];
+            }
+        } else {
+            [self showStatusWithMessage:@"Доступ в интернет отсутствует."];
+            _wantPublicationsButton.title = @"Отсутствует доступ в Интернет";
+            _wantPublicationsButton.enabled = NO;
+            [self performSelector:@selector(restoreWantPublicationsButton) withObject:self afterDelay:3.0f];
+        }
     } else {
-        [self showStatusWithMessage:@"Доступ в интернет отсутствует."];
-        _wantPublicationsButton.title = @"Отсутствует доступ в Интернет";
+        _wantPublicationsButton.title = @"Список публикаций скачивается";
         _wantPublicationsButton.enabled = NO;
         [self performSelector:@selector(restoreWantPublicationsButton) withObject:self afterDelay:3.0f];
     }
@@ -461,11 +512,71 @@ int missingCount = 0;
     [self performSelector:@selector(restoreWantPublicationsButton) withObject:self afterDelay:3.0f];
 }
 
-
 - (void)restoreWantPublicationsButton
 {
     _wantPublicationsButton.enabled = YES;
     _wantPublicationsButton.title = @"Обновить список журналов";
+}
+
+
+
+- (void)loadImageForCellAtIndex:(NSIndexPath *)indexPath withPath:(NSString *)path
+{
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]];
+        UIImage *image = [UIImage imageWithData:imageData];
+        
+        if (publicationCoversCache == nil) {
+            publicationCoversCache = [[NSMutableDictionary alloc] init];
+        }
+        [publicationCoversCache setObject:image forKey:indexPath];
+        
+        DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[[self tableView] cellForRowAtIndexPath:indexPath];
+        
+        if (cell.coverView.image == nil) {
+            cell.coverView.image = image;
+            cell.coverView.hidden = NO;
+        }
+    }];
+    [imageLoadOperationQueue addOperation:op];
+}
+
+- (void)loadButtonPressed:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[[button superview] superview];
+    
+    if (!publicationDownloadConnections) {
+        publicationDownloadConnections = [[NSMutableArray alloc] init];
+    }
+    if (!publicationDownloadData) {
+        publicationDownloadData = [[NSMutableArray alloc] init];
+    }
+    if (!publicationDownloadIndexPaths) {
+        publicationDownloadIndexPaths = [[NSMutableArray alloc] init];
+    }
+    
+    NSIndexPath *path = [[self tableView] indexPathForCell:cell];
+    NSDictionary *cellData = (NSDictionary *)[remotePublicationList objectAtIndex:[path row]];
+    NSURLRequest *r = [NSURLRequest requestWithURL:[NSURL URLWithString:[cellData valueForKey:@"path"]]];
+    NSURLConnection *c = [NSURLConnection connectionWithRequest:r delegate:self];
+    NSMutableData *data = [NSMutableData data];
+    
+    [publicationDownloadIndexPaths addObject:path];
+    [publicationDownloadConnections addObject:c];
+    [publicationDownloadData addObject:data];
+}
+
+
+
+- (BOOL)publicationsAreDownloading
+{
+    BOOL downloading = NO;
+    if ([publicationDownloadConnections count]) {
+        downloading = YES;
+    }
+    
+    return downloading;
 }
 
 @end

@@ -15,6 +15,8 @@
 		2C4D00E413612F73008157BE /* Statistics1Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00DE13612F73008157BE /* Statistics1Text.m */; };
 		2C4D00E513612F73008157BE /* Statistics2Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00DF13612F73008157BE /* Statistics2Text.m */; };
 		2C4D00E613612F73008157BE /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00E213612F73008157BE /* ScrollViewController.m */; };
+		2C54D8BF1455ADC9005E6217 /* DownloaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C54D8BD1455ADC9005E6217 /* DownloaderTableViewCell.m */; };
+		2C54D8C01455ADC9005E6217 /* DownloaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C54D8BE1455ADC9005E6217 /* DownloaderTableViewCell.xib */; };
 		2C5A331D1368FE4800095E37 /* drugmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A331C1368FE4800095E37 /* drugmap.jpg */; };
 		2C5A33221368FEBD00095E37 /* DrugMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A33211368FEBD00095E37 /* DrugMapViewController.m */; };
 		2C5A33241368FFD600095E37 /* DrugMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33231368FFD600095E37 /* DrugMapView.xib */; };
@@ -129,6 +131,9 @@
 		2C4D00E113612F73008157BE /* Statistics1Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistics1Text.h; sourceTree = "<group>"; };
 		2C4D00E213612F73008157BE /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
 		2C4D00E313612F73008157BE /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		2C54D8BC1455ADC9005E6217 /* DownloaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloaderTableViewCell.h; sourceTree = "<group>"; };
+		2C54D8BD1455ADC9005E6217 /* DownloaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloaderTableViewCell.m; sourceTree = "<group>"; };
+		2C54D8BE1455ADC9005E6217 /* DownloaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloaderTableViewCell.xib; sourceTree = "<group>"; };
 		2C5A331C1368FE4800095E37 /* drugmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drugmap.jpg; sourceTree = "<group>"; };
 		2C5A33201368FEBD00095E37 /* DrugMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugMapViewController.h; sourceTree = "<group>"; };
 		2C5A33211368FEBD00095E37 /* DrugMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugMapViewController.m; sourceTree = "<group>"; };
@@ -374,6 +379,9 @@
 				2CB50BBB142FAFC500CA4771 /* PublicationController.h */,
 				2CB50BBC142FAFC500CA4771 /* PublicationController.m */,
 				2CB50BBD142FAFC500CA4771 /* PublicationController.xib */,
+				2C54D8BC1455ADC9005E6217 /* DownloaderTableViewCell.h */,
+				2C54D8BD1455ADC9005E6217 /* DownloaderTableViewCell.m */,
+				2C54D8BE1455ADC9005E6217 /* DownloaderTableViewCell.xib */,
 			);
 			name = Magazine;
 			sourceTree = "<group>";
@@ -676,6 +684,7 @@
 				2C141A8F1430626A008E465B /* magazinetab.png in Resources */,
 				2C2EBB5D14446FF000F7EACA /* Info4.html in Resources */,
 				2C2EBB5E14446FF000F7EACA /* Info5.html in Resources */,
+				2C54D8C01455ADC9005E6217 /* DownloaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +720,7 @@
 				2CB50BD5142FBB3D00CA4771 /* zip.c in Sources */,
 				2CB50BDE142FBBF700CA4771 /* Reachability.m in Sources */,
 				2CB50BDF142FBBF700CA4771 /* SSZipArchive.m in Sources */,
+				2C54D8BF1455ADC9005E6217 /* DownloaderTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

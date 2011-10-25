@@ -28,6 +28,8 @@
 
 @class DrugMapViewController;
 
+@class MagazineRootViewController;
+
 @interface FSKN_2AppDelegate : NSObject <UIApplicationDelegate> {
 
 }
@@ -80,6 +82,13 @@
 
 @property (nonatomic, retain) IBOutlet UINavigationController *magazineNavigationController;
 
+@property (nonatomic, retain) IBOutlet MagazineRootViewController *magazineRootViewController;
+
+@property (nonatomic, retain) IBOutlet UIButton *magazineImageView;
+
+@property (nonatomic, retain) IBOutlet UIButton *loadMagazineButton;
+
+
 - (IBAction)goToYoutube;
 - (IBAction)goToMain;
 - (IBAction)goToGeography;
@@ -93,6 +102,8 @@
 - (IBAction)goToBiography;
 - (IBAction)goToDrugMap;
 - (IBAction)goToMagazine;
+
+- (IBAction)loadLatestMagazine;
 
 
 @end

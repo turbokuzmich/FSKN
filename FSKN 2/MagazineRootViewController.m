@@ -14,30 +14,36 @@
 #import "DownloaderTableViewCell.h"
 
 BOOL remoteXMLLoading = NO;
-NSURLConnection *publicationsXmlConnection;      // соединение по получению xml с сервера
-NSMutableData *publicationsXmlData;              // данные, полученные с сервера (потом парсятся как xml)
-NSMutableArray *remotePublicationList;           // массив из объектов публикаций
-NSMutableDictionary *currentRemotePublication;   // текущая публикация
-NSString* currentRemotePublicationPropertyName;  // текущее свойство публикации
-NSString* currentRemotePublicationPropertyValue; // текущее значение текущего свойства
-NSMutableArray *publicationDownloadConnections;  // массив открытых соединений по скачиванию журналов
-NSMutableArray *publicationDownloadIndexPaths;   // массив индекспутей ячеек, для которых идет скачивание
-NSMutableArray *publicationDownloadData;         // массив полученных данных скачиваемых публикаций
-NSMutableDictionary *publicationCoversCache;     // кеш картинок для нескаченных публикаций (ключ — indexPath)
+NSURLConnection *publicationsXmlConnection = nil;      // соединение по получению xml с сервера
+NSMutableData *publicationsXmlData = nil;              // данные, полученные с сервера (потом парсятся как xml)
+NSMutableArray *remotePublicationList = nil;           // массив из объектов публикаций
+NSMutableDictionary *currentRemotePublication = nil;   // текущая публикация
+NSString* currentRemotePublicationPropertyName = nil;  // текущее свойство публикации
+NSString* currentRemotePublicationPropertyValue = nil; // текущее значение текущего свойства
+NSMutableArray *publicationDownloadConnections = nil;  // массив открытых соединений по скачиванию журналов
+NSMutableArray *publicationDownloadIndexPaths = nil;   // массив индекспутей ячеек, для которых идет скачивание
+NSMutableArray *publicationDownloadData = nil;         // массив полученных данных скачиваемых публикаций
+NSMutableDictionary *publicationCoversCache = nil;     // кеш картинок для нескаченных публикаций (ключ — indexPath)
 
 @implementation MagazineRootViewController
 
 @synthesize localPublications = _localPublications;
 @synthesize wantPublicationsButton = _wantPublicationsButton;
 @synthesize imageLoadOperationQueue;
+@synthesize publicationToShow;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    // сбрасываем публикацию, которую нужно показать
+    publicationToShow = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -247,12 +253,18 @@ NSMutableDictionary *publicationCoversCache;     // кеш картинок дл
     }
     
     if (num != nil) {
-        PublicationController *publicationController = [[[PublicationController alloc] initWithNibName:@"PublicationController" bundle:nil] autorelease];
-        publicationController.num = num;
-        [self.navigationController pushViewController:publicationController animated:YES];
+        [self showPublicationWithID:num];
     }
 }
 
+
+
+- (void)showPublicationWithID:(NSString *)ID
+{
+    PublicationController *publicationController = [[[PublicationController alloc] initWithNibName:@"PublicationController" bundle:nil] autorelease];
+    publicationController.num = ID;
+    [self.navigationController pushViewController:publicationController animated:YES];
+}
 
 
 - (void)updateLocalPublications
@@ -315,12 +327,14 @@ NSMutableDictionary *publicationCoversCache;     // кеш картинок дл
 
 - (void)loadPublicationsXml
 {
-    remoteXMLLoading = YES;
-    
-    NSURL *publicationsXmlUrl = [NSURL URLWithString:@"http://dima2.local.crmm.ru/publications.list.xml"];
-    NSURLRequest *publicationsXmlRequest = [NSURLRequest requestWithURL:publicationsXmlUrl];
-    publicationsXmlConnection = [[NSURLConnection alloc] initWithRequest:publicationsXmlRequest delegate:self];
-    publicationsXmlData = [[NSMutableData alloc] init];
+    if (!remoteXMLLoading && ![self publicationsAreDownloading]) {
+        remoteXMLLoading = YES;
+        
+        NSURL *publicationsXmlUrl = [NSURL URLWithString:@"http://dima2.local.crmm.ru/publications.list.xml"];
+        NSURLRequest *publicationsXmlRequest = [NSURLRequest requestWithURL:publicationsXmlUrl];
+        publicationsXmlConnection = [[NSURLConnection alloc] initWithRequest:publicationsXmlRequest delegate:self];
+        publicationsXmlData = [[NSMutableData alloc] init];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
@@ -369,6 +383,11 @@ NSMutableDictionary *publicationCoversCache;     // кеш картинок дл
     [self.tableView reloadData];
     
     [self disableWantPublicationsButton];
+    
+    // проверяем, хотим ли мы показать журнал с главной страницы
+    if (self.publicationToShow != nil) {
+        [self loadPublicationWithID:self.publicationToShow];
+    }
 }
 
 
@@ -461,6 +480,12 @@ NSMutableDictionary *publicationCoversCache;     // кеш картинок дл
             [self showStatusWithMessage:@"Публикация скачена"];
             
             [self updateLocalPublications];
+            
+            // переход на свежескаченный журнал с главной страницы
+            if (self.publicationToShow != nil) {
+                [self showPublicationWithID:self.publicationToShow];
+                self.publicationToShow = nil;
+            }
         }
     }
 }
@@ -546,25 +571,49 @@ NSMutableDictionary *publicationCoversCache;     // кеш картинок дл
     UIButton *button = (UIButton *)sender;
     DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[[button superview] superview];
     
-    if (!publicationDownloadConnections) {
-        publicationDownloadConnections = [[NSMutableArray alloc] init];
-    }
-    if (!publicationDownloadData) {
-        publicationDownloadData = [[NSMutableArray alloc] init];
-    }
-    if (!publicationDownloadIndexPaths) {
-        publicationDownloadIndexPaths = [[NSMutableArray alloc] init];
-    }
-    
     NSIndexPath *path = [[self tableView] indexPathForCell:cell];
+    
+    [self loadPublicationForCellAtPath:path];
+}
+
+- (void)loadPublicationForCellAtPath:(NSIndexPath *)path
+{
     NSDictionary *cellData = (NSDictionary *)[remotePublicationList objectAtIndex:[path row]];
     NSURLRequest *r = [NSURLRequest requestWithURL:[NSURL URLWithString:[cellData valueForKey:@"path"]]];
     NSURLConnection *c = [NSURLConnection connectionWithRequest:r delegate:self];
     NSMutableData *data = [NSMutableData data];
     
+    if (publicationDownloadConnections == nil) {
+        publicationDownloadConnections = [[NSMutableArray alloc] init];
+    }
+    if (publicationDownloadData == nil) {
+        publicationDownloadData = [[NSMutableArray alloc] init];
+    }
+    if (publicationDownloadIndexPaths == nil) {
+        publicationDownloadIndexPaths = [[NSMutableArray alloc] init];
+    }
+    
     [publicationDownloadIndexPaths addObject:path];
     [publicationDownloadConnections addObject:c];
     [publicationDownloadData addObject:data];
+}
+
+- (void)loadPublicationWithID:(NSString *)ID
+{
+    int i = 0;
+    BOOL found = NO;
+    for (; i < [remotePublicationList count]; i++) {
+        if ([[(NSDictionary *)[remotePublicationList objectAtIndex:i] valueForKey:@"id"] isEqualToString:ID]) {
+            found = YES;
+            break;
+        }
+    }
+    
+    if (found) {
+        NSUInteger indexArr[] = { 0, i };
+        NSIndexPath *path = [NSIndexPath indexPathWithIndexes:indexArr length:2];
+        [self loadPublicationForCellAtPath:path];
+    }
 }
 
 
@@ -578,5 +627,6 @@ NSMutableDictionary *publicationCoversCache;     // кеш картинок дл
     
     return downloading;
 }
+
 
 @end

@@ -54,6 +54,8 @@
 		2CAABDE81368A5F40016C009 /* structuretab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDDF1368A5F40016C009 /* structuretab-selected.png */; };
 		2CAABDE91368A5F40016C009 /* thesistab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDE01368A5F40016C009 /* thesistab-selected.png */; };
 		2CAABDEA1368A5F40016C009 /* videotab-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAABDE11368A5F40016C009 /* videotab-selected.png */; };
+		2CAEBD5B1455BFF0006CF631 /* allMagazinesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAEBD591455BFF0006CF631 /* allMagazinesButton.png */; };
+		2CAEBD5C1455BFF0006CF631 /* downloadMagazineButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAEBD5A1455BFF0006CF631 /* downloadMagazineButton.png */; };
 		2CB50BAC142F909200CA4771 /* MagazineRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BAA142F909200CA4771 /* MagazineRootViewController.m */; };
 		2CB50BAD142F909200CA4771 /* MagazineRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CB50BAB142F909200CA4771 /* MagazineRootViewController.xib */; };
 		2CB50BBE142FAFC500CA4771 /* PublicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB50BBC142FAFC500CA4771 /* PublicationController.m */; };
@@ -173,6 +175,8 @@
 		2CAABDDF1368A5F40016C009 /* structuretab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structuretab-selected.png"; sourceTree = "<group>"; };
 		2CAABDE01368A5F40016C009 /* thesistab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thesistab-selected.png"; sourceTree = "<group>"; };
 		2CAABDE11368A5F40016C009 /* videotab-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotab-selected.png"; sourceTree = "<group>"; };
+		2CAEBD591455BFF0006CF631 /* allMagazinesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allMagazinesButton.png; sourceTree = "<group>"; };
+		2CAEBD5A1455BFF0006CF631 /* downloadMagazineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadMagazineButton.png; sourceTree = "<group>"; };
 		2CB50BA9142F909200CA4771 /* MagazineRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazineRootViewController.h; sourceTree = "<group>"; };
 		2CB50BAA142F909200CA4771 /* MagazineRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazineRootViewController.m; sourceTree = "<group>"; };
 		2CB50BAB142F909200CA4771 /* MagazineRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MagazineRootViewController.xib; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 		2C7F3153136115F3009071A0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2CAEBD591455BFF0006CF631 /* allMagazinesButton.png */,
+				2CAEBD5A1455BFF0006CF631 /* downloadMagazineButton.png */,
 				2C141A8E1430626A008E465B /* magazinetab.png */,
 				2C5A33391369208C00095E37 /* appicon.png */,
 				2C5A33311369186700095E37 /* saratovbubble.png */,
@@ -685,6 +691,8 @@
 				2C2EBB5D14446FF000F7EACA /* Info4.html in Resources */,
 				2C2EBB5E14446FF000F7EACA /* Info5.html in Resources */,
 				2C54D8C01455ADC9005E6217 /* DownloaderTableViewCell.xib in Resources */,
+				2CAEBD5B1455BFF0006CF631 /* allMagazinesButton.png in Resources */,
+				2CAEBD5C1455BFF0006CF631 /* downloadMagazineButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

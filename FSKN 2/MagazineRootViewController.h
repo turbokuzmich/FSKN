@@ -16,6 +16,9 @@ Reachability *internetReachable;
 @property (nonatomic, retain) NSMutableArray *localPublications;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *wantPublicationsButton;
 @property (nonatomic, retain) NSOperationQueue *imageLoadOperationQueue;
+@property (nonatomic, retain) NSString *publicationToShow;
+
+- (void)showPublicationWithID:(NSString *)ID;
 
 - (void)updateLocalPublications;
 
@@ -31,6 +34,8 @@ Reachability *internetReachable;
 
 - (void)loadImageForCellAtIndex:(NSIndexPath *)indexPath withPath:(NSString *)path;
 - (void)loadButtonPressed:(id)sender;
+- (void)loadPublicationForCellAtPath:(NSIndexPath *)path;
+- (void)loadPublicationWithID:(NSString *)ID;
 
 - (BOOL)publicationsAreDownloading;
 

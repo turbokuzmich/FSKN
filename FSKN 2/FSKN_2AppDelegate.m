@@ -6,27 +6,26 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#define LATEST_MAGAZINE_URL "http://dima2.local.crmm.ru/latest.publication.php"
+
 #import "FSKN_2AppDelegate.h"
-
 #import "RootViewController.h"
-
 #import "StartScreenViewController.h"
-
 #import "ScrollViewController.h"
-
 #import "MainScreenViewController.h"
-
 #import "GeographyViewController.h"
-
 #import "ThesisViewController.h"
-
 #import "StructureViewController.h"
-
 #import "BiographyViewController.h"
-
 #import "DrugMapViewController.h"
+#import "MagazineRootViewController.h"
 
 @implementation FSKN_2AppDelegate
+
+
+NSMutableData *latestMagazineData = nil;
+NSString *latestMagazineID = nil;
+
 
 
 @synthesize window=_window;
@@ -77,13 +76,22 @@
 
 @synthesize magazineNavigationController;
 
+@synthesize magazineRootViewController;
+
+@synthesize magazineImageView;
+
+@synthesize loadMagazineButton;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    // Add the split view controller's view to the window and display.
-    
     self.startScreenWindow.rootViewController = self.startScreenViewController;
     [self.startScreenWindow makeKeyAndVisible];
+    
+    // скачиваем инфу про последний журнал
+    latestMagazineData = [[NSMutableData alloc] init];
+    NSURLRequest *latestMagazineRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@LATEST_MAGAZINE_URL]];
+    NSURLConnection *latestMagazineConnection = [NSURLConnection connectionWithRequest:latestMagazineRequest delegate:self];
+    [latestMagazineConnection retain];
     
     return YES;
 }
@@ -129,6 +137,9 @@
 
 - (void)dealloc
 {
+    [loadMagazineButton release];
+    [magazineImageView release];
+    [magazineRootViewController release];
     [magazineWindow release];
     [magazineNavigationController release];
     [drugMapWindow release];
@@ -234,6 +245,83 @@
 {
     self.magazineWindow.rootViewController = self.magazineNavigationController;
     [self.magazineWindow makeKeyAndVisible];
+}
+
+
+
+- (void)loadLatestMagazine
+{
+    self.magazineRootViewController.publicationToShow = latestMagazineID;
+    [self goToMagazine];
+    
+    // переход на самый последний журнал по ссылки с главной страницы
+    if (self.magazineRootViewController.publicationToShow != nil) {
+        for (NSDictionary *pub in self.magazineRootViewController.localPublications) {
+            if ([[pub valueForKey:@"id"] isEqualToString:self.magazineRootViewController.publicationToShow]) {
+                [self.magazineRootViewController showPublicationWithID:self.magazineRootViewController.publicationToShow];
+                self.magazineRootViewController.publicationToShow = nil;
+                break;
+            }
+        }
+    }
+    
+    // если не нашли журнал локально
+    if (self.magazineRootViewController.publicationToShow) {
+        [self.magazineRootViewController loadPublicationsXml];
+    }
+}
+
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"Failed to load latest magazine cover %@", error);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [latestMagazineData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [latestMagazineData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *response = [[[NSString alloc] initWithData:latestMagazineData encoding:NSUTF8StringEncoding] autorelease];
+    NSArray *parts = [response componentsSeparatedByString:@"\n"];
+
+    latestMagazineID = [[parts objectAtIndex:0] retain];
+    NSString *cover = [parts objectAtIndex:1];
+    
+    // проверяем, имеется ли журнальчик
+    NSFileManager *df = [NSFileManager defaultManager];
+    NSArray *appPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirPath = [appPaths objectAtIndex:0];
+    NSString *magazineDirectory = [documentDirPath stringByAppendingPathComponent:latestMagazineID];
+    if ([df fileExistsAtPath:magazineDirectory]) {
+        // загрузка картинки из файловой системы
+        NSString *coverPath = [magazineDirectory stringByAppendingPathComponent:@"cover.jpg"];
+        NSData *imageData = [NSData dataWithContentsOfFile:coverPath];
+        UIImage *coverImage = [UIImage imageWithData:imageData];
+        [self.magazineImageView setImage:coverImage forState:UIControlStateNormal];
+    } else {
+        // асинхронная загрузка картинки из веба
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:cover]];
+            UIImage *coverImage = [UIImage imageWithData:imageData];
+            [self.magazineImageView setImage:coverImage forState:UIControlStateNormal];
+        }];
+    }
+    
+    // раздисейбливаем кнопочки
+    self.magazineImageView.enabled = YES;
+    self.loadMagazineButton.enabled = YES;
+    
+    [connection release];
+    [latestMagazineData release];
 }
 
 

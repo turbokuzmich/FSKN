@@ -51,12 +51,13 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
-						<reference key="NSNextKeyView" ref="478997323"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="838568405"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">drugmap.jpg</string>
+							<string key="NSResourceName">drugmap.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="478997323">
@@ -64,13 +65,28 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="159273662"/>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">drugmap-red.jpg</string>
+							<string key="NSResourceName">drugmap-red.png</string>
+						</object>
+					</object>
+					<object class="IBUIImageView" id="838568405">
+						<reference key="NSNextResponder" ref="899806259"/>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
+						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="478997323"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">drugmap-top.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="159273662">
@@ -78,13 +94,14 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="138753874"/>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">drugmap-arrows1.jpg</string>
+							<string key="NSResourceName">drugmap-arrows1.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="138753874">
@@ -92,13 +109,14 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="126139846"/>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">drugmap-arrows2.jpg</string>
+							<string key="NSResourceName">drugmap-arrows2.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="126139846">
@@ -106,13 +124,14 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="670591481"/>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">drugmap-arrows3.jpg</string>
+							<string key="NSResourceName">drugmap-arrows3.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="670591481">
@@ -120,13 +139,14 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 19}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="159691855"/>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">drugmap-arrows4.jpg</string>
+							<string key="NSResourceName">drugmap-arrows4.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="572113501">
@@ -134,6 +154,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, -10}, {1024, 749}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="269076798"/>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -148,6 +169,7 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{17, 88}, {291, 182}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="889185178"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -180,6 +202,8 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{623, 175}, {291, 179}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -201,6 +225,7 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{164, 103}, {291, 180}}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="102845724"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -223,19 +248,26 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{1024, 44}</string>
 						<reference key="NSSuperview" ref="899806259"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="561441812"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSArray" key="IBUIItems">
+						<object class="NSMutableArray" key="IBUIItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUINavigationItem" id="728877585">
 								<reference key="IBUINavigationBar" ref="269076798"/>
 								<string key="IBUITitle">Карта наркотрафика</string>
 								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="85324869">
 									<string key="IBUITitle">На главную</string>
+									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+									<int key="IBUIStyle">1</int>
+									<reference key="IBUINavigationItem" ref="728877585"/>
+								</object>
+								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="842731864">
+									<string key="IBUITitle">Проиграть сначала</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="728877585"/>
@@ -247,6 +279,7 @@
 				</object>
 				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="572113501"/>
 				<reference key="IBUIBackgroundColor" ref="155554974"/>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
@@ -374,6 +407,14 @@
 					</object>
 					<int key="connectionID">29</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">replayButtonPressed:</string>
+						<reference key="source" ref="842731864"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">33</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -401,7 +442,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="561441812"/>
-							<reference ref="478997323"/>
 							<reference ref="159273662"/>
 							<reference ref="138753874"/>
 							<reference ref="126139846"/>
@@ -411,6 +451,8 @@
 							<reference ref="102845724"/>
 							<reference ref="889185178"/>
 							<reference ref="269076798"/>
+							<reference ref="838568405"/>
+							<reference ref="478997323"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -484,17 +526,29 @@
 						<reference key="parent" ref="899806259"/>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">30</int>
+						<reference key="object" ref="838568405"/>
+						<reference key="parent" ref="899806259"/>
+						<string key="objectName">Надписи на карте</string>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
 						<reference key="object" ref="728877585"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="85324869"/>
+							<reference ref="842731864"/>
 						</object>
 						<reference key="parent" ref="269076798"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
 						<reference key="object" ref="85324869"/>
+						<reference key="parent" ref="728877585"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">32</int>
+						<reference key="object" ref="842731864"/>
 						<reference key="parent" ref="728877585"/>
 					</object>
 				</object>
@@ -516,6 +570,8 @@
 					<string>26.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
 					<string>28.IBPluginDependency</string>
+					<string>30.IBPluginDependency</string>
+					<string>32.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
@@ -527,6 +583,8 @@
 					<string>DrugMapViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -556,7 +614,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">29</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -570,9 +628,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>backButtonPressed</string>
 							<string>cityBubblePressed:</string>
+							<string>replayButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -583,6 +643,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>backButtonPressed</string>
 							<string>cityBubblePressed:</string>
+							<string>replayButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -592,6 +653,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">cityBubblePressed:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">replayButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -696,19 +761,21 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>drugmap-arrows1.jpg</string>
-				<string>drugmap-arrows2.jpg</string>
-				<string>drugmap-arrows3.jpg</string>
-				<string>drugmap-arrows4.jpg</string>
+				<string>drugmap-arrows1.png</string>
+				<string>drugmap-arrows2.png</string>
+				<string>drugmap-arrows3.png</string>
+				<string>drugmap-arrows4.png</string>
 				<string>drugmap-pins.png</string>
-				<string>drugmap-red.jpg</string>
-				<string>drugmap.jpg</string>
+				<string>drugmap-red.png</string>
+				<string>drugmap-top.png</string>
+				<string>drugmap.png</string>
 				<string>novosibbubble.png</string>
 				<string>piterbubble.png</string>
 				<string>saratovbubble.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{1024, 749}</string>
 				<string>{1024, 749}</string>
 				<string>{1024, 749}</string>
 				<string>{1024, 749}</string>

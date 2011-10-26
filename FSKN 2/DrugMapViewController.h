@@ -30,19 +30,23 @@
 
 @property (nonatomic, retain) IBOutlet UIImageView *pins;
 
+@property (nonatomic, retain) UIBarButtonItem *replayButton;
 
-- (void)startArrows1Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
-- (void)startArrows2Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
-- (void)startArrows3Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
-- (void)startArrows4Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
 
-- (void)startPinsAnimation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+- (void)startArrows1Animation;
+- (void)startArrows2Animation;
+- (void)startArrows3Animation;
+- (void)startArrows4Animation;
 
-- (void)animationsDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+- (void)startPinsAnimation;
+
+- (void)animationsDone;
 
 - (IBAction)cityBubblePressed:(id)sender;
 
 - (IBAction)backButtonPressed;
+
+- (IBAction)replayButtonPressed:(id)sender;
 
 
 @end

@@ -17,14 +17,8 @@
 		2C4D00E613612F73008157BE /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D00E213612F73008157BE /* ScrollViewController.m */; };
 		2C54D8BF1455ADC9005E6217 /* DownloaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C54D8BD1455ADC9005E6217 /* DownloaderTableViewCell.m */; };
 		2C54D8C01455ADC9005E6217 /* DownloaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C54D8BE1455ADC9005E6217 /* DownloaderTableViewCell.xib */; };
-		2C5A331D1368FE4800095E37 /* drugmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A331C1368FE4800095E37 /* drugmap.jpg */; };
 		2C5A33221368FEBD00095E37 /* DrugMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A33211368FEBD00095E37 /* DrugMapViewController.m */; };
 		2C5A33241368FFD600095E37 /* DrugMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33231368FFD600095E37 /* DrugMapView.xib */; };
-		2C5A33261369019300095E37 /* drugmap-red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33251369019300095E37 /* drugmap-red.jpg */; };
-		2C5A332B1369072300095E37 /* drugmap-arrows4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33271369072300095E37 /* drugmap-arrows4.jpg */; };
-		2C5A332C1369072300095E37 /* drugmap-arrows3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33281369072300095E37 /* drugmap-arrows3.jpg */; };
-		2C5A332D1369072300095E37 /* drugmap-arrows2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33291369072300095E37 /* drugmap-arrows2.jpg */; };
-		2C5A332E1369072300095E37 /* drugmap-arrows1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A332A1369072300095E37 /* drugmap-arrows1.jpg */; };
 		2C5A333013690CF400095E37 /* drugmap-pins.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A332F13690CF400095E37 /* drugmap-pins.png */; };
 		2C5A33341369186700095E37 /* saratovbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33311369186700095E37 /* saratovbubble.png */; };
 		2C5A33351369186700095E37 /* novosibbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33321369186700095E37 /* novosibbubble.png */; };
@@ -107,6 +101,14 @@
 		2CBFF4FC13614291000336C8 /* startscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFF4FB13614291000336C8 /* startscreen.png */; };
 		2CBFF50C136154D4000336C8 /* GeographyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFF50B136154D4000336C8 /* GeographyViewController.m */; };
 		2CBFF50E13615AF1000336C8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBFF50D13615AF1000336C8 /* MapKit.framework */; };
+		2CE39B6E1457064E00B017E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE39B6D1457064E00B017E2 /* QuartzCore.framework */; };
+		2CE39B71145725ED00B017E2 /* drugmap-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B70145725ED00B017E2 /* drugmap-red.png */; };
+		2CE39B731457273100B017E2 /* drugmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B721457273100B017E2 /* drugmap.png */; };
+		2CE39B75145727A200B017E2 /* drugmap-top.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B74145727A200B017E2 /* drugmap-top.png */; };
+		2CE39B771458095900B017E2 /* drugmap-arrows1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B761458095900B017E2 /* drugmap-arrows1.png */; };
+		2CE39B7A14580B5C00B017E2 /* drugmap-arrows2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B7814580B5C00B017E2 /* drugmap-arrows2.png */; };
+		2CE39B7B14580B5C00B017E2 /* drugmap-arrows3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B7914580B5C00B017E2 /* drugmap-arrows3.png */; };
+		2CE39B7D14580C2D00B017E2 /* drugmap-arrows4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE39B7C14580C2D00B017E2 /* drugmap-arrows4.png */; };
 		2CF86D641360EDBC00292FD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D631360EDBC00292FD4 /* UIKit.framework */; };
 		2CF86D661360EDBC00292FD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D651360EDBC00292FD4 /* Foundation.framework */; };
 		2CF86D681360EDBC00292FD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF86D671360EDBC00292FD4 /* CoreGraphics.framework */; };
@@ -136,15 +138,9 @@
 		2C54D8BC1455ADC9005E6217 /* DownloaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloaderTableViewCell.h; sourceTree = "<group>"; };
 		2C54D8BD1455ADC9005E6217 /* DownloaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloaderTableViewCell.m; sourceTree = "<group>"; };
 		2C54D8BE1455ADC9005E6217 /* DownloaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloaderTableViewCell.xib; sourceTree = "<group>"; };
-		2C5A331C1368FE4800095E37 /* drugmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drugmap.jpg; sourceTree = "<group>"; };
 		2C5A33201368FEBD00095E37 /* DrugMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugMapViewController.h; sourceTree = "<group>"; };
 		2C5A33211368FEBD00095E37 /* DrugMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugMapViewController.m; sourceTree = "<group>"; };
 		2C5A33231368FFD600095E37 /* DrugMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrugMapView.xib; sourceTree = "<group>"; };
-		2C5A33251369019300095E37 /* drugmap-red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-red.jpg"; sourceTree = "<group>"; };
-		2C5A33271369072300095E37 /* drugmap-arrows4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows4.jpg"; sourceTree = "<group>"; };
-		2C5A33281369072300095E37 /* drugmap-arrows3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows3.jpg"; sourceTree = "<group>"; };
-		2C5A33291369072300095E37 /* drugmap-arrows2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows2.jpg"; sourceTree = "<group>"; };
-		2C5A332A1369072300095E37 /* drugmap-arrows1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "drugmap-arrows1.jpg"; sourceTree = "<group>"; };
 		2C5A332F13690CF400095E37 /* drugmap-pins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-pins.png"; sourceTree = "<group>"; };
 		2C5A33311369186700095E37 /* saratovbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saratovbubble.png; sourceTree = "<group>"; };
 		2C5A33321369186700095E37 /* novosibbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = novosibbubble.png; sourceTree = "<group>"; };
@@ -245,6 +241,14 @@
 		2CBFF50A136154D4000336C8 /* GeographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeographyViewController.h; sourceTree = "<group>"; };
 		2CBFF50B136154D4000336C8 /* GeographyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeographyViewController.m; sourceTree = "<group>"; };
 		2CBFF50D13615AF1000336C8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2CE39B6D1457064E00B017E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2CE39B70145725ED00B017E2 /* drugmap-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-red.png"; sourceTree = "<group>"; };
+		2CE39B721457273100B017E2 /* drugmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drugmap.png; sourceTree = "<group>"; };
+		2CE39B74145727A200B017E2 /* drugmap-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-top.png"; sourceTree = "<group>"; };
+		2CE39B761458095900B017E2 /* drugmap-arrows1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-arrows1.png"; sourceTree = "<group>"; };
+		2CE39B7814580B5C00B017E2 /* drugmap-arrows2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-arrows2.png"; sourceTree = "<group>"; };
+		2CE39B7914580B5C00B017E2 /* drugmap-arrows3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-arrows3.png"; sourceTree = "<group>"; };
+		2CE39B7C14580C2D00B017E2 /* drugmap-arrows4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drugmap-arrows4.png"; sourceTree = "<group>"; };
 		2CF86D5F1360EDBC00292FD4 /* FSKN 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSKN 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF86D631360EDBC00292FD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CF86D651360EDBC00292FD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -270,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE39B6E1457064E00B017E2 /* QuartzCore.framework in Frameworks */,
 				2CB50BD9142FBBB100CA4771 /* libz.1.2.3.dylib in Frameworks */,
 				2CB50BD7142FBB8A00CA4771 /* SystemConfiguration.framework in Frameworks */,
 				2CBFF50E13615AF1000336C8 /* MapKit.framework in Frameworks */,
@@ -320,6 +325,13 @@
 		2C7F3153136115F3009071A0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2CE39B7C14580C2D00B017E2 /* drugmap-arrows4.png */,
+				2CE39B7814580B5C00B017E2 /* drugmap-arrows2.png */,
+				2CE39B7914580B5C00B017E2 /* drugmap-arrows3.png */,
+				2CE39B761458095900B017E2 /* drugmap-arrows1.png */,
+				2CE39B74145727A200B017E2 /* drugmap-top.png */,
+				2CE39B721457273100B017E2 /* drugmap.png */,
+				2CE39B70145725ED00B017E2 /* drugmap-red.png */,
 				2CAEBD591455BFF0006CF631 /* allMagazinesButton.png */,
 				2CAEBD5A1455BFF0006CF631 /* downloadMagazineButton.png */,
 				2C141A8E1430626A008E465B /* magazinetab.png */,
@@ -328,12 +340,6 @@
 				2C5A33321369186700095E37 /* novosibbubble.png */,
 				2C5A33331369186700095E37 /* piterbubble.png */,
 				2C5A332F13690CF400095E37 /* drugmap-pins.png */,
-				2C5A33271369072300095E37 /* drugmap-arrows4.jpg */,
-				2C5A33281369072300095E37 /* drugmap-arrows3.jpg */,
-				2C5A33291369072300095E37 /* drugmap-arrows2.jpg */,
-				2C5A332A1369072300095E37 /* drugmap-arrows1.jpg */,
-				2C5A33251369019300095E37 /* drugmap-red.jpg */,
-				2C5A331C1368FE4800095E37 /* drugmap.jpg */,
 				2CBB7FAF1368FA1D00A762CB /* ivanov-photo.jpg */,
 				2CBB7FAB1368F84E00A762CB /* biographybutton.png */,
 				2CBB7FA31368F53B00A762CB /* gnk-logo.jpg */,
@@ -501,6 +507,7 @@
 		2CF86D621360EDBC00292FD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CE39B6D1457064E00B017E2 /* QuartzCore.framework */,
 				2CB50BD8142FBBB100CA4771 /* libz.1.2.3.dylib */,
 				2CB50BD6142FBB8A00CA4771 /* SystemConfiguration.framework */,
 				2CBFF50D13615AF1000336C8 /* MapKit.framework */,
@@ -673,13 +680,7 @@
 				2CBB7FAC1368F84E00A762CB /* biographybutton.png in Resources */,
 				2CBB7FAE1368F8F300A762CB /* Biography.html in Resources */,
 				2CBB7FB01368FA1D00A762CB /* ivanov-photo.jpg in Resources */,
-				2C5A331D1368FE4800095E37 /* drugmap.jpg in Resources */,
 				2C5A33241368FFD600095E37 /* DrugMapView.xib in Resources */,
-				2C5A33261369019300095E37 /* drugmap-red.jpg in Resources */,
-				2C5A332B1369072300095E37 /* drugmap-arrows4.jpg in Resources */,
-				2C5A332C1369072300095E37 /* drugmap-arrows3.jpg in Resources */,
-				2C5A332D1369072300095E37 /* drugmap-arrows2.jpg in Resources */,
-				2C5A332E1369072300095E37 /* drugmap-arrows1.jpg in Resources */,
 				2C5A333013690CF400095E37 /* drugmap-pins.png in Resources */,
 				2C5A33341369186700095E37 /* saratovbubble.png in Resources */,
 				2C5A33351369186700095E37 /* novosibbubble.png in Resources */,
@@ -693,6 +694,13 @@
 				2C54D8C01455ADC9005E6217 /* DownloaderTableViewCell.xib in Resources */,
 				2CAEBD5B1455BFF0006CF631 /* allMagazinesButton.png in Resources */,
 				2CAEBD5C1455BFF0006CF631 /* downloadMagazineButton.png in Resources */,
+				2CE39B71145725ED00B017E2 /* drugmap-red.png in Resources */,
+				2CE39B731457273100B017E2 /* drugmap.png in Resources */,
+				2CE39B75145727A200B017E2 /* drugmap-top.png in Resources */,
+				2CE39B771458095900B017E2 /* drugmap-arrows1.png in Resources */,
+				2CE39B7A14580B5C00B017E2 /* drugmap-arrows2.png in Resources */,
+				2CE39B7B14580B5C00B017E2 /* drugmap-arrows3.png in Resources */,
+				2CE39B7D14580C2D00B017E2 /* drugmap-arrows4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

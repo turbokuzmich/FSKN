@@ -6,14 +6,14 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "DrugMapViewController.h"
-
 #import "FSKN_2AppDelegate.h"
 
 
 @implementation DrugMapViewController
 
-@synthesize redMap, arrows1, arrows2, arrows3, arrows4, pins, piter, novosib, saratov;
+@synthesize redMap, arrows1, arrows2, arrows3, arrows4, pins, piter, novosib, saratov, replayButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +35,7 @@
     [arrows2 release];
     [arrows3 release];
     [arrows4 release];
+    [replayButton release];
     [super dealloc];
 }
 
@@ -60,21 +61,20 @@
 {
     [super viewDidLoad];
     
+    
     animationDone = NO;
     cityShown = NO;
     piterRect = CGRectMake(61.0f, 43.0f, 37.0f, 60.0f);
     novosibRect = CGRectMake(746.0f, 132.0f, 37.0f, 60.0f);
     saratovRect = CGRectMake(287.0f, 194.0f, 37.0f, 60.0f);
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelay:1.0];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(startArrows1Animation:finished:context:)];
     
-    redMap.alpha = 1.0f;
+    // запускаем бесконечную анимацию афганистана
+    [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
+        redMap.alpha = 1.0f;
+    } completion:nil];
     
-    [UIView commitAnimations];
+    [self startArrows1Animation];
 }
 
 - (void)viewDidUnload
@@ -89,6 +89,7 @@
     self.piter = nil;
     self.novosib = nil;
     self.saratov = nil;
+    self.replayButton = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -99,82 +100,61 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
-- (void)startArrows1Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)startArrows1Animation
 {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(startArrows2Animation:finished:context:)];
-    
-    arrows1.alpha = 1.0f;
-    
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        arrows1.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        [self startArrows2Animation];
+    }];
 }
 
-- (void)startArrows2Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)startArrows2Animation
 {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelay:0.5];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(startArrows3Animation:finished:context:)];
-    
-    arrows2.alpha = 1.0f;
-    
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5f delay:0.5f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        arrows2.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        [self startArrows3Animation];
+    }];
 }
 
-- (void)startArrows3Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)startArrows3Animation
 {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelay:0.5];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(startArrows4Animation:finished:context:)];
-    
-    arrows3.alpha = 1.0f;
-    
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5f delay:0.5f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        arrows3.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        [self startArrows4Animation];
+    }];
 }
 
-- (void)startArrows4Animation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)startArrows4Animation
 {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelay:0.5];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(startPinsAnimation:finished:context:)];
-    
-    arrows4.alpha = 1.0f;
-    
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5f delay:0.5f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        arrows4.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        [self startPinsAnimation];
+    }];
 }
 
-- (void)startPinsAnimation:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)startPinsAnimation
 {
     CGRect pinsRect = CGRectMake(0.0f, 19.0f, 1024.0f, 749.0f);
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.2];
-    [UIView setAnimationDelay:0.5];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationsDone:finished:context:)];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    
-    pins.frame = pinsRect;
-    pins.alpha = 1.0f;
-    
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.2f delay:0.5f options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveEaseOut animations:^{
+        pins.frame = pinsRect;
+        pins.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        [self animationsDone];
+    }];
 }
 
-- (void)animationsDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+- (void)animationsDone
 {
     animationDone = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
     if (animationDone && !cityShown) {
         UITouch *touch = [touches anyObject];
         CGPoint touchLocation = [touch locationInView:self.view];
@@ -206,6 +186,29 @@
 - (void)backButtonPressed
 {
     [(FSKN_2AppDelegate *)[[UIApplication sharedApplication] delegate] goToMain];
+}
+
+- (void)replayButtonPressed:(id)sender
+{
+    if (animationDone) {
+        
+        piter.hidden = YES;
+        novosib.hidden = YES;
+        saratov.hidden = YES;
+        
+        cityShown = NO;
+        
+        [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            arrows1.alpha = 0.0f;
+            arrows2.alpha = 0.0f;
+            arrows3.alpha = 0.0f;
+            arrows4.alpha = 0.0f;
+            pins.alpha = 0.0f;
+        } completion:^(BOOL finished){
+            animationDone = NO;
+            [self performSelector:@selector(startArrows1Animation) withObject:self afterDelay:1.5f];
+        }];
+    }
 }
 
 @end

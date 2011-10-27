@@ -61,7 +61,6 @@
 {
     [super viewDidLoad];
     
-    
     animationDone = NO;
     cityShown = NO;
     piterRect = CGRectMake(61.0f, 43.0f, 37.0f, 60.0f);
@@ -206,6 +205,7 @@
             pins.alpha = 0.0f;
         } completion:^(BOOL finished){
             animationDone = NO;
+            pins.frame = CGRectMake(0.0f, -10.0f, 1024.0f, 749.0f);
             [self performSelector:@selector(startArrows1Animation) withObject:self afterDelay:1.5f];
         }];
     }

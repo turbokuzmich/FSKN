@@ -84,9 +84,19 @@
 
 @property (nonatomic, retain) IBOutlet MagazineRootViewController *magazineRootViewController;
 
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *magazineActivityIndicator;
+
 @property (nonatomic, retain) IBOutlet UIButton *magazineImageView;
 
 @property (nonatomic, retain) IBOutlet UIButton *loadMagazineButton;
+
+@property (nonatomic, retain) IBOutlet UIButton *readMagazineButton;
+
+@property (nonatomic, retain) IBOutlet UIButton *allMagazinesButton;
+
+@property (nonatomic, retain) IBOutlet UIImageView *newImageView;
+
+@property (nonatomic, retain) IBOutlet UITextView *noInternetLabel;
 
 
 - (IBAction)goToYoutube;

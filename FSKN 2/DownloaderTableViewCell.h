@@ -11,9 +11,13 @@
 @interface DownloaderTableViewCell : UITableViewCell
 
 @property (nonatomic, retain) IBOutlet UIImageView *coverView;
+
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *dateLabel;
-@property (nonatomic, retain) IBOutlet UILabel *downloadLabel;
+
 @property (nonatomic, retain) IBOutlet UIButton *downloadButton;
+@property (nonatomic, retain) IBOutlet UIImageView *readButton;
+
+@property (nonatomic, retain) IBOutlet UIProgressView *progressView;
 
 @end

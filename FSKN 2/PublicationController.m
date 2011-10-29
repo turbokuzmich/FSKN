@@ -8,9 +8,16 @@
 
 #import "PublicationController.h"
 
+BOOL buttonsHidden = YES;
+BOOL isMoving = NO;
+
 @implementation PublicationController
 
+@synthesize scrollView = _scrollView;
+@synthesize leftButton = _leftButton;
+@synthesize rightButton = _rightButton;
 @synthesize num;
+@synthesize webViewsToObserve;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.webViewsToObserve = [NSMutableArray array];
     self.navigationController.toolbarHidden = YES;
 }
 
@@ -62,9 +70,8 @@
     
     if (pagesCount == 0) return;
     
-    ((UIScrollView *)self.view).contentSize = CGSizeMake(pagesCount * self.view.bounds.size.width, self.view.bounds.size.height);
-    ((UIScrollView *)self.view).bounces = NO;
-    ((UIScrollView *)self.view).pagingEnabled = YES;
+    (self.scrollView).contentSize = CGSizeMake(pagesCount * self.view.bounds.size.width, self.view.bounds.size.height);
+    (self.scrollView).pagingEnabled = YES;
     
     for (int i = 0; i < pagesCount; i++) {
         UIWebView *newWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(i * self.view.bounds.size.width, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)] autorelease];
@@ -73,29 +80,29 @@
         NSURLRequest *newRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
         [newWebView loadRequest:newRequest];
         
-        [self.view addSubview:newWebView];
+        [self.scrollView addSubview:newWebView];
+        [self.webViewsToObserve addObject:newWebView];
     }
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
     
-    self.num = nil;
+    self.scrollView = nil;
+    self.leftButton = nil;
+    self.rightButton = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     NSMutableArray *webViews = [NSMutableArray array];
-    for (id subview in self.view.subviews) {
+    for (id subview in self.scrollView.subviews) {
         if ([subview isKindOfClass:[UIWebView class]]) {
             [webViews addObject:subview];
         }
@@ -109,10 +116,88 @@
     }
 }
 
-- (void)dealloc
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [num release];
-    [super dealloc];
+    isMoving = YES;
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    isMoving = NO;
+    
+    CGFloat frameWidth = self.scrollView.frame.size.width;
+    CGFloat offset = self.scrollView.contentOffset.x;
+    CGFloat contentWidth = self.scrollView.contentSize.width;
+    
+    if (!buttonsHidden) {
+        if (offset == 0.0f) {
+            self.leftButton.hidden = YES;
+            self.rightButton.hidden = NO;
+        } else if (contentWidth - offset == frameWidth) {
+            self.leftButton.hidden = NO;
+            self.rightButton.hidden = YES;
+        } else {
+            self.leftButton.hidden = NO;
+            self.rightButton.hidden = NO;
+        }
+    }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    [self scrollViewDidEndDecelerating:scrollView];
+}
+
+- (void)userDidTapWebView
+{
+    if (buttonsHidden) {
+        CGFloat frameWidth = self.scrollView.frame.size.width;
+        CGFloat offset = self.scrollView.contentOffset.x;
+        CGFloat contentWidth = self.scrollView.contentSize.width;
+        
+        if (offset == 0.0f) {
+            self.leftButton.hidden = YES;
+            self.rightButton.hidden = NO;
+        } else if (contentWidth - offset == frameWidth) {
+            self.leftButton.hidden = NO;
+            self.rightButton.hidden = YES;
+        } else {
+            self.leftButton.hidden = NO;
+            self.rightButton.hidden = NO;
+        }
+    } else {
+        self.leftButton.hidden = YES;
+        self.rightButton.hidden = YES;
+    }
+    
+    buttonsHidden = !buttonsHidden;
+}
+
+- (void)left:(id)sender
+{
+    if (!isMoving) {
+        CGFloat frameWidth = self.scrollView.frame.size.width;
+        CGFloat offset = self.scrollView.contentOffset.x;
+        
+        CGPoint to = CGPointMake(offset - frameWidth, 0.0f);
+        [self.scrollView setContentOffset:to animated:YES];
+        
+        isMoving = YES;
+    }
+}
+
+- (void)right:(id)sender
+{
+    if (!isMoving) {
+        CGFloat frameWidth = self.scrollView.frame.size.width;
+        CGFloat offset = self.scrollView.contentOffset.x;
+        
+        CGPoint to = CGPointMake(offset + frameWidth, 0.0f);
+        [self.scrollView setContentOffset:to animated:YES];
+        
+        isMoving = YES;
+    }
+}
+
 
 @end

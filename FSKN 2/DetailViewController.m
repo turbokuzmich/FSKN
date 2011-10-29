@@ -168,7 +168,7 @@
     // prevent uiwebview from bouncing vertically
     for (id subview in webView.subviews) {
         if ([[subview class] isSubclassOfClass:[UIScrollView class]]) {
-            ((UIScrollView *)subview).bounces = NO;
+            ((UIScrollView *)subview).bounces = YES;
         }
     }
 }

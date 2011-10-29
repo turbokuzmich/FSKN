@@ -11,7 +11,7 @@
 
 @implementation ScrollViewController
 
-@synthesize scrollView, statistics1, statistics2, pageControl;
+@synthesize scrollView, statistics1, statistics2, statistics3, pageControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,7 @@
     [scrollView release];
     [statistics1 release];
     [statistics2 release];
+    [statistics3 release];
     [pageControl release];
     [super dealloc];
 }
@@ -62,11 +63,13 @@
     
     self.statistics1.frame = size;
     self.statistics2.frame = CGRectMake(size.size.width, 0.0f, size.size.width, size.size.height);
+    self.statistics3.frame = CGRectMake(size.size.width * 2, 0.0f, size.size.width, size.size.height);
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 3, self.scrollView.frame.size.height);
     
     [self.scrollView addSubview:self.statistics1];
     [self.scrollView addSubview:self.statistics2];
+    [self.scrollView addSubview:self.statistics3];
 }
 
 - (void)viewDidUnload
@@ -75,6 +78,7 @@
     self.statistics1 = nil;
     self.statistics2 = nil;
     self.pageControl = nil;
+    self.statistics3 = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

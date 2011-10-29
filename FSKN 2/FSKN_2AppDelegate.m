@@ -82,16 +82,37 @@ NSString *latestMagazineID = nil;
 
 @synthesize loadMagazineButton;
 
+@synthesize readMagazineButton;
+
+@synthesize allMagazinesButton;
+
+@synthesize magazineActivityIndicator;
+
+@synthesize newImageView;
+
+@synthesize noInternetLabel;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.startScreenWindow.rootViewController = self.startScreenViewController;
     [self.startScreenWindow makeKeyAndVisible];
     
-    // скачиваем инфу про последний журнал
-    latestMagazineData = [[NSMutableData alloc] init];
-    NSURLRequest *latestMagazineRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@LATEST_MAGAZINE_URL]];
-    NSURLConnection *latestMagazineConnection = [NSURLConnection connectionWithRequest:latestMagazineRequest delegate:self];
-    [latestMagazineConnection retain];
+    if ([self.magazineRootViewController checkNetworkStatus]) {
+        // скачиваем инфу про последний журнал
+        latestMagazineData = [[NSMutableData alloc] init];
+        NSURLRequest *latestMagazineRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@LATEST_MAGAZINE_URL]];
+        NSURLConnection *latestMagazineConnection = [NSURLConnection connectionWithRequest:latestMagazineRequest delegate:self];
+        [latestMagazineConnection retain];
+    } else {
+        // закрываем все кнопочки и пишем, что доступа в инет нету
+        self.magazineImageView.hidden = YES;
+        self.loadMagazineButton.hidden = YES;
+        self.readMagazineButton.hidden = YES;
+        self.magazineActivityIndicator.hidden = YES;
+        self.allMagazinesButton.hidden = YES;
+        self.newImageView.hidden = YES;
+        self.noInternetLabel.hidden = NO;
+    }
     
     return YES;
 }
@@ -137,6 +158,11 @@ NSString *latestMagazineID = nil;
 
 - (void)dealloc
 {
+    [noInternetLabel release];
+    [newImageView release];
+    [allMagazinesButton release];
+    [magazineActivityIndicator release];
+    [readMagazineButton release];
     [loadMagazineButton release];
     [magazineImageView release];
     [magazineRootViewController release];
@@ -276,6 +302,8 @@ NSString *latestMagazineID = nil;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"Failed to load latest magazine cover %@", error);
+    [connection release];
+    [latestMagazineData release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -307,6 +335,8 @@ NSString *latestMagazineID = nil;
         NSData *imageData = [NSData dataWithContentsOfFile:coverPath];
         UIImage *coverImage = [UIImage imageWithData:imageData];
         [self.magazineImageView setImage:coverImage forState:UIControlStateNormal];
+        self.readMagazineButton.hidden = NO;
+        self.loadMagazineButton.hidden = YES;
     } else {
         // асинхронная загрузка картинки из веба
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -314,11 +344,10 @@ NSString *latestMagazineID = nil;
             UIImage *coverImage = [UIImage imageWithData:imageData];
             [self.magazineImageView setImage:coverImage forState:UIControlStateNormal];
         }];
+        self.loadMagazineButton.enabled = YES;
     }
     
-    // раздисейбливаем кнопочки
     self.magazineImageView.enabled = YES;
-    self.loadMagazineButton.enabled = YES;
     
     [connection release];
     [latestMagazineData release];

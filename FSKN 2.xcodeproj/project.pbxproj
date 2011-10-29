@@ -24,6 +24,13 @@
 		2C5A33351369186700095E37 /* novosibbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33321369186700095E37 /* novosibbubble.png */; };
 		2C5A33361369186700095E37 /* piterbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33331369186700095E37 /* piterbubble.png */; };
 		2C5A333A1369208C00095E37 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5A33391369208C00095E37 /* appicon.png */; };
+		2C732AE9145C120A006B270B /* readButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C732AE8145C120A006B270B /* readButton.png */; };
+		2C732AEC145C1895006B270B /* newmagazineLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C732AEB145C1895006B270B /* newmagazineLabel.png */; };
+		2C732AEE145C1C8C006B270B /* readmagazineButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C732AED145C1C8C006B270B /* readmagazineButton.png */; };
+		2C732AF1145C3A53006B270B /* MagazineWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C732AF0145C3A53006B270B /* MagazineWindow.m */; };
+		2C732AF4145C4A22006B270B /* scrollleftButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C732AF2145C4A22006B270B /* scrollleftButton.png */; };
+		2C732AF5145C4A22006B270B /* scrollrightButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C732AF3145C4A22006B270B /* scrollrightButton.png */; };
+		2C732AF7145C62B9006B270B /* st2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C732AF6145C62B9006B270B /* st2.png */; };
 		2C7F31421361012A009071A0 /* Info2.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F31411361012A009071A0 /* Info2.html */; };
 		2C7F3146136106A4009071A0 /* Info3.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F3145136106A4009071A0 /* Info3.html */; };
 		2C7F314C13610D90009071A0 /* backBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F314B13610D90009071A0 /* backBarButton.png */; };
@@ -146,6 +153,14 @@
 		2C5A33321369186700095E37 /* novosibbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = novosibbubble.png; sourceTree = "<group>"; };
 		2C5A33331369186700095E37 /* piterbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piterbubble.png; sourceTree = "<group>"; };
 		2C5A33391369208C00095E37 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = ../appicon.png; sourceTree = "<group>"; };
+		2C732AE8145C120A006B270B /* readButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readButton.png; sourceTree = "<group>"; };
+		2C732AEB145C1895006B270B /* newmagazineLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newmagazineLabel.png; sourceTree = "<group>"; };
+		2C732AED145C1C8C006B270B /* readmagazineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readmagazineButton.png; sourceTree = "<group>"; };
+		2C732AEF145C3A53006B270B /* MagazineWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazineWindow.h; sourceTree = "<group>"; };
+		2C732AF0145C3A53006B270B /* MagazineWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazineWindow.m; sourceTree = "<group>"; };
+		2C732AF2145C4A22006B270B /* scrollleftButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollleftButton.png; sourceTree = "<group>"; };
+		2C732AF3145C4A22006B270B /* scrollrightButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollrightButton.png; sourceTree = "<group>"; };
+		2C732AF6145C62B9006B270B /* st2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = st2.png; sourceTree = "<group>"; };
 		2C7F31411361012A009071A0 /* Info2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Info2.html; sourceTree = "<group>"; };
 		2C7F3145136106A4009071A0 /* Info3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Info3.html; sourceTree = "<group>"; };
 		2C7F314B13610D90009071A0 /* backBarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backBarButton.png; sourceTree = "<group>"; };
@@ -325,6 +340,12 @@
 		2C7F3153136115F3009071A0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2C732AF6145C62B9006B270B /* st2.png */,
+				2C732AF2145C4A22006B270B /* scrollleftButton.png */,
+				2C732AF3145C4A22006B270B /* scrollrightButton.png */,
+				2C732AED145C1C8C006B270B /* readmagazineButton.png */,
+				2C732AEB145C1895006B270B /* newmagazineLabel.png */,
+				2C732AE8145C120A006B270B /* readButton.png */,
 				2CE39B7C14580C2D00B017E2 /* drugmap-arrows4.png */,
 				2CE39B7814580B5C00B017E2 /* drugmap-arrows2.png */,
 				2CE39B7914580B5C00B017E2 /* drugmap-arrows3.png */,
@@ -394,6 +415,8 @@
 				2C54D8BC1455ADC9005E6217 /* DownloaderTableViewCell.h */,
 				2C54D8BD1455ADC9005E6217 /* DownloaderTableViewCell.m */,
 				2C54D8BE1455ADC9005E6217 /* DownloaderTableViewCell.xib */,
+				2C732AEF145C3A53006B270B /* MagazineWindow.h */,
+				2C732AF0145C3A53006B270B /* MagazineWindow.m */,
 			);
 			name = Magazine;
 			sourceTree = "<group>";
@@ -701,6 +724,12 @@
 				2CE39B7A14580B5C00B017E2 /* drugmap-arrows2.png in Resources */,
 				2CE39B7B14580B5C00B017E2 /* drugmap-arrows3.png in Resources */,
 				2CE39B7D14580C2D00B017E2 /* drugmap-arrows4.png in Resources */,
+				2C732AE9145C120A006B270B /* readButton.png in Resources */,
+				2C732AEC145C1895006B270B /* newmagazineLabel.png in Resources */,
+				2C732AEE145C1C8C006B270B /* readmagazineButton.png in Resources */,
+				2C732AF4145C4A22006B270B /* scrollleftButton.png in Resources */,
+				2C732AF5145C4A22006B270B /* scrollrightButton.png in Resources */,
+				2C732AF7145C62B9006B270B /* st2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +766,7 @@
 				2CB50BDE142FBBF700CA4771 /* Reachability.m in Sources */,
 				2CB50BDF142FBBF700CA4771 /* SSZipArchive.m in Sources */,
 				2C54D8BF1455ADC9005E6217 /* DownloaderTableViewCell.m in Sources */,
+				2C732AF1145C3A53006B270B /* MagazineWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

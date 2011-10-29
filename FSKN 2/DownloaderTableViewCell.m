@@ -10,7 +10,7 @@
 
 @implementation DownloaderTableViewCell
 
-@synthesize coverView = _coverView, titleLabel = _titleLabel, dateLabel = _dateLabel, downloadButton = _downloadButton, downloadLabel = _downloadLabel;
+@synthesize coverView = _coverView, titleLabel = _titleLabel, dateLabel = _dateLabel, downloadButton = _downloadButton, readButton = _readButton, progressView = _progressView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,10 +31,14 @@
 - (void)dealloc
 {
     [_downloadButton release];
+    [_readButton release];
+    
     [_coverView release];
+    
     [_titleLabel release];
     [_dateLabel release];
-    [_downloadLabel release];
+    
+    [_progressView release];
     [super dealloc];
 }
 

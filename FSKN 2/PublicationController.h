@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MagazineWindow.h"
 
-@interface PublicationController : UIViewController
+@interface PublicationController : UIViewController<TapDetectionWindowDelegate, UIScrollViewDelegate>
 
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) NSString *num;
+@property (nonatomic, retain) NSMutableArray *webViewsToObserve;
+@property (nonatomic, retain) IBOutlet UIButton* leftButton;
+@property (nonatomic, retain) IBOutlet UIButton* rightButton;
+
+- (IBAction)left:(id)sender;
+- (IBAction)right:(id)sender;
 
 @end

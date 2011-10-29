@@ -22,6 +22,7 @@ NSString* currentRemotePublicationPropertyName = nil;  // текущее сво�
 NSString* currentRemotePublicationPropertyValue = nil; // текущее значение текущего свойства
 NSMutableArray *publicationDownloadConnections = nil;  // массив открытых соединений по скачиванию журналов
 NSMutableArray *publicationDownloadIndexPaths = nil;   // массив индекспутей ячеек, для которых идет скачивание
+NSMutableArray *publicationDownloadResponses = nil;    // массив NSNumber expected download size ячеек, для которых идет скачивание
 NSMutableArray *publicationDownloadData = nil;         // массив полученных данных скачиваемых публикаций
 NSMutableDictionary *publicationCoversCache = nil;     // кеш картинок для нескаченных публикаций (ключ — indexPath)
 
@@ -61,8 +62,6 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
     [super viewDidLoad];
     
     self.navigationController.toolbarHidden = NO;
-    
-    internetReachable = [[Reachability reachabilityForInternetConnection] retain];
     
     imageLoadOperationQueue = [[NSOperationQueue alloc] init];
     
@@ -172,6 +171,7 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
         UIImage *coverImage = [UIImage imageWithData:coverData];
         cell.coverView.image = coverImage;
         cell.coverView.hidden = NO;
+        cell.readButton.hidden = NO;
     } else {
         NSDictionary *cellData = (NSDictionary *)[remotePublicationList objectAtIndex:[indexPath row]];
         NSString *ID = [cellData valueForKey:@"id"];
@@ -194,16 +194,25 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
             UIImage *coverImage = [UIImage imageWithData:coverData];
             cell.coverView.image = coverImage;
             cell.coverView.hidden = NO;
+            cell.readButton.hidden = NO;
         } else {
             BOOL isLoading = NO;
+            int i = 0;
             for (NSIndexPath *p in publicationDownloadIndexPaths) {
                 if (p.row == indexPath.row) {
                     isLoading = YES;
+                    break;
                 }
+                i++;
             }
             
             if (isLoading) {
-                cell.downloadLabel.hidden = NO;
+                float totalSize = [(NSNumber *)[publicationDownloadResponses objectAtIndex:i] floatValue];
+                float currentSize = (float)[(NSMutableData *)[publicationDownloadData objectAtIndex:i] length];
+                float progress = currentSize / totalSize;
+                
+                cell.progressView.progress = progress;
+                cell.progressView.hidden = NO;
             } else {
                 cell.downloadButton.hidden = NO;
                 [cell.downloadButton addTarget:self action:@selector(loadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -308,6 +317,10 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
 {
     BOOL internetOk = NO;
     
+    if (internetReachable == nil) {
+        internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+    }
+    
     NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
     switch (internetStatus) {
         case ReachableViaWiFi:
@@ -407,6 +420,7 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
             [publicationDownloadConnections removeObjectAtIndex:connectionIndex];
             [publicationDownloadData removeObjectAtIndex:connectionIndex];
             [publicationDownloadIndexPaths removeObjectAtIndex:connectionIndex];
+            [publicationDownloadResponses removeObjectAtIndex:connectionIndex];
         }
     }
 }
@@ -424,7 +438,11 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
             NSIndexPath *path = [publicationDownloadIndexPaths objectAtIndex:connectionIndex];
             DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
             cell.downloadButton.hidden = YES;
-            cell.downloadLabel.hidden = NO;
+            cell.progressView.progress = 0.0;
+            cell.progressView.hidden = NO;
+            
+            NSNumber *expectedSize = [NSNumber numberWithFloat:(float)[response expectedContentLength]];
+            [publicationDownloadResponses replaceObjectAtIndex:connectionIndex withObject:expectedSize];
         }
     }
 }
@@ -438,6 +456,15 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
         if (connectionIndex != NSNotFound) {
             NSMutableData *d = [publicationDownloadData objectAtIndex:connectionIndex];
             [d appendData:data];
+            
+            float totalSize = [(NSNumber *)[publicationDownloadResponses objectAtIndex:connectionIndex] floatValue];
+            float currentSize = (float)[d length];
+            float progress = currentSize / totalSize;
+            
+            NSIndexPath *path = [publicationDownloadIndexPaths objectAtIndex:connectionIndex];
+            DownloaderTableViewCell *cell = (DownloaderTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
+            
+            cell.progressView.progress = progress;
         }
     }
 }
@@ -476,6 +503,7 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
             [publicationDownloadConnections removeObjectAtIndex:connectionIndex];
             [publicationDownloadData removeObjectAtIndex:connectionIndex];
             [publicationDownloadIndexPaths removeObjectAtIndex:connectionIndex];
+            [publicationDownloadResponses removeObjectAtIndex:connectionIndex];
             
             [self showStatusWithMessage:@"Публикация скачена"];
             
@@ -483,6 +511,10 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
             
             // переход на свежескаченный журнал с главной страницы
             if (self.publicationToShow != nil) {
+                // меняем кнопку на главной, т.к. журнальчик-то уже скачали
+                [[(FSKN_2AppDelegate *)[[UIApplication sharedApplication] delegate] loadMagazineButton] setHidden:YES];
+                [[(FSKN_2AppDelegate *)[[UIApplication sharedApplication] delegate] readMagazineButton] setHidden:NO];
+                
                 [self showPublicationWithID:self.publicationToShow];
                 self.publicationToShow = nil;
             }
@@ -592,10 +624,14 @@ NSMutableDictionary *publicationCoversCache = nil;     // кеш картино�
     if (publicationDownloadIndexPaths == nil) {
         publicationDownloadIndexPaths = [[NSMutableArray alloc] init];
     }
+    if (publicationDownloadResponses == nil) {
+        publicationDownloadResponses = [[NSMutableArray alloc] init];
+    }
     
     [publicationDownloadIndexPaths addObject:path];
     [publicationDownloadConnections addObject:c];
     [publicationDownloadData addObject:data];
+    [publicationDownloadResponses addObject:[NSNumber numberWithFloat:0.0]];
 }
 
 - (void)loadPublicationWithID:(NSString *)ID

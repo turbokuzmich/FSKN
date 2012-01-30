@@ -40,7 +40,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    detailViewController.detailItem = [[NSNumber alloc] initWithUnsignedInt:0];
+    detailViewController.detailItem = [[[NSNumber alloc] initWithUnsignedInt:0] autorelease];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -142,7 +142,7 @@
      [detailViewController release];
      */
     
-    detailViewController.detailItem = [[NSNumber alloc] initWithUnsignedInt:indexPath.row];
+    detailViewController.detailItem = [[[NSNumber alloc] initWithUnsignedInt:indexPath.row] autorelease];
 }
 
 - (void)didReceiveMemoryWarning

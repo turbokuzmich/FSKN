@@ -94,7 +94,7 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *allMagazinesButton;
 
-@property (nonatomic, retain) IBOutlet UIImageView *newImageView;
+@property (nonatomic, retain) IBOutlet UIImageView *nImageView;
 
 @property (nonatomic, retain) IBOutlet UITextView *noInternetLabel;
 

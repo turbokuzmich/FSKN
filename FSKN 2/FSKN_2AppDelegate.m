@@ -19,6 +19,7 @@
 #import "BiographyViewController.h"
 #import "DrugMapViewController.h"
 #import "MagazineRootViewController.h"
+#import "MainScreenViewController.h"
 
 @implementation FSKN_2AppDelegate
 
@@ -88,7 +89,7 @@ NSString *latestMagazineID = nil;
 
 @synthesize magazineActivityIndicator;
 
-@synthesize newImageView;
+@synthesize nImageView;
 
 @synthesize noInternetLabel;
 
@@ -110,7 +111,7 @@ NSString *latestMagazineID = nil;
         self.readMagazineButton.hidden = YES;
         self.magazineActivityIndicator.hidden = YES;
         self.allMagazinesButton.hidden = YES;
-        self.newImageView.hidden = YES;
+        self.nImageView.hidden = YES;
         self.noInternetLabel.hidden = NO;
     }
     
@@ -156,10 +157,15 @@ NSString *latestMagazineID = nil;
      */
 }
 
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    NSLog(@"Memory!");
+}
+
 - (void)dealloc
 {
     [noInternetLabel release];
-    [newImageView release];
+    [nImageView release];
     [allMagazinesButton release];
     [magazineActivityIndicator release];
     [readMagazineButton release];
@@ -196,44 +202,58 @@ NSString *latestMagazineID = nil;
 
 -(void)goToMain
 {
-    self.mainScreenWindow.rootViewController = self.mainScreenViewController;
-    [self.mainScreenWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.mainScreenViewController.view];
+//    self.mainScreenWindow.rootViewController = self.mainScreenViewController;
+//    [self.mainScreenWindow makeKeyAndVisible];
 }
 
 -(void)goToGeography
 {
-    self.georgaphyWindow.rootViewController = self.geographyViewController;
-    [self.georgaphyWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.geographyViewController.view];
+//    self.georgaphyWindow.rootViewController = self.geographyViewController;
+//    [self.georgaphyWindow makeKeyAndVisible];
 }
 
 - (void)goToStatistics
 {
-    self.statisticsWindow.rootViewController = self.statisticsViewController;
-    [self.statisticsWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.statisticsViewController.view];
+//    self.statisticsWindow.rootViewController = self.statisticsViewController;
+//    [self.statisticsWindow makeKeyAndVisible];
 }
 
 - (void)goToDocuments
 {
-    self.window.rootViewController = self.splitViewController;
-    [self.window makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.splitViewController.view];
+//    self.window.rootViewController = self.splitViewController;
+//    [self.window makeKeyAndVisible];
 }
 
 - (void)goToInternational
 {
-    self.internationalWindow.rootViewController = self.internationalSplitViewController;
-    [self.internationalWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.internationalSplitViewController.view];
+//    self.internationalWindow.rootViewController = self.internationalSplitViewController;
+//    [self.internationalWindow makeKeyAndVisible];
 }
 
 - (void)goToThesis
 {
-    self.thesisWindow.rootViewController = self.thesisController;
-    [self.thesisWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.thesisController.view];
+//    self.thesisWindow.rootViewController = self.thesisController;
+//    [self.thesisWindow makeKeyAndVisible];
 }
 
 - (void)goToStructure
 {
-    self.structureWindow.rootViewController = self.structureController;
-    [self.structureWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.structureController.view];
+//    self.structureWindow.rootViewController = self.structureController;
+//    [self.structureWindow makeKeyAndVisible];
 }
 
 - (void)goToBlog
@@ -250,14 +270,18 @@ NSString *latestMagazineID = nil;
 
 - (void)goToBiography
 {
-    self.biographyWindow.rootViewController = self.biographyController;
-    [self.biographyWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.biographyController.view];
+//    self.biographyWindow.rootViewController = self.biographyController;
+//    [self.biographyWindow makeKeyAndVisible];
 }
 
 - (void)goToDrugMap
 {
-    self.drugMapWindow.rootViewController = self.drugMapController;
-    [self.drugMapWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.drugMapController.view];
+//    self.drugMapWindow.rootViewController = self.drugMapController;
+//    [self.drugMapWindow makeKeyAndVisible];
 }
 
 -(void)goToYoutube
@@ -269,8 +293,10 @@ NSString *latestMagazineID = nil;
 
 - (void)goToMagazine
 {
-    self.magazineWindow.rootViewController = self.magazineNavigationController;
-    [self.magazineWindow makeKeyAndVisible];
+    [(UIView *)[self.startScreenWindow.subviews objectAtIndex:0] removeFromSuperview];
+    [self.startScreenWindow addSubview:self.magazineNavigationController.view];
+//    self.magazineWindow.rootViewController = self.magazineNavigationController;
+//    [self.magazineWindow makeKeyAndVisible];
 }
 
 

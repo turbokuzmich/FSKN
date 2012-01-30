@@ -93,23 +93,6 @@
     
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 16, self.scrollView.frame.size.height);
-    
-    [self.scrollView addSubview:self.statistics1];
-    [self.scrollView addSubview:self.statistics2];
-    [self.scrollView addSubview:self.statistics3];
-    [self.scrollView addSubview:self.statistics4];
-    [self.scrollView addSubview:self.statistics5];
-    [self.scrollView addSubview:self.statistics6];
-    [self.scrollView addSubview:self.statistics7];
-    [self.scrollView addSubview:self.statistics8];
-    [self.scrollView addSubview:self.statistics9];
-    [self.scrollView addSubview:self.statistics10];
-    [self.scrollView addSubview:self.statistics11];
-    [self.scrollView addSubview:self.statistics12];
-    [self.scrollView addSubview:self.statistics13];
-    [self.scrollView addSubview:self.statistics14];
-    [self.scrollView addSubview:self.statistics15];
-    [self.scrollView addSubview:self.statistics16];
 }
 
 - (void)viewDidUnload
@@ -135,6 +118,45 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.scrollView addSubview:self.statistics1];
+    [self.scrollView addSubview:self.statistics2];
+    [self.scrollView addSubview:self.statistics3];
+    [self.scrollView addSubview:self.statistics4];
+    [self.scrollView addSubview:self.statistics5];
+    [self.scrollView addSubview:self.statistics6];
+    [self.scrollView addSubview:self.statistics7];
+    [self.scrollView addSubview:self.statistics8];
+    [self.scrollView addSubview:self.statistics9];
+    [self.scrollView addSubview:self.statistics10];
+    [self.scrollView addSubview:self.statistics11];
+    [self.scrollView addSubview:self.statistics12];
+    [self.scrollView addSubview:self.statistics13];
+    [self.scrollView addSubview:self.statistics14];
+    [self.scrollView addSubview:self.statistics15];
+    [self.scrollView addSubview:self.statistics16];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.statistics1 removeFromSuperview];
+    [self.statistics2 removeFromSuperview];
+    [self.statistics3 removeFromSuperview];
+    [self.statistics4 removeFromSuperview];
+    [self.statistics5 removeFromSuperview];
+    [self.statistics6 removeFromSuperview];
+    [self.statistics7 removeFromSuperview];
+    [self.statistics8 removeFromSuperview];
+    [self.statistics9 removeFromSuperview];
+    [self.statistics10 removeFromSuperview];
+    [self.statistics11 removeFromSuperview];
+    [self.statistics12 removeFromSuperview];
+    [self.statistics13 removeFromSuperview];
+    [self.statistics14 removeFromSuperview];
+    [self.statistics15 removeFromSuperview];
+    [self.statistics16 removeFromSuperview];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
